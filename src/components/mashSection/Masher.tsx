@@ -20,6 +20,7 @@ function Masher(props: MasherProps) {
 
   function handleMash() {
     props.handleMashClick();
+    console.log("click")
   }
 
   return (
@@ -29,9 +30,9 @@ function Masher(props: MasherProps) {
       onMouseUp={handleMouseUp}
       onClick={handleMash}
     >
-      <div className="currentMashes">{props.currentMashes}</div>
+      <div className="currentMashes crazy-box-shadow default-border">{props.currentMashes}</div>
       <div className={`laptop-container ${isPressed ? "pressed" : ""}`} >
-        <img src={laptop} className="laptop-img" alt="laptop" />
+        <img src={laptop} className="laptop-img " alt="laptop" />
       </div>
     </div>
   );
