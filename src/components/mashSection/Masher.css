@@ -1,0 +1,28 @@
+.masher-background{
+  width: 100%;
+  height:  auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+}.laptop-container{
+  
+  width: 80%;
+  height:  auto;
+
+}
+.laptop-img{
+  width: 100%;
+  height:  100%;
+
+}
+.currentMashes {
+  background-color: #f44336;
+  color: #fff;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 5px;
+}
