@@ -19,10 +19,14 @@
 
 }
 .currentMashes {
-  background-color: #f44336;
+  background-color: var( --primary-color);
   color: #fff;
-  padding: 10px;
-  font-size: 18px;
+  padding: 16px;
+  font-size: 2rem;
   font-weight: bold;
   border-radius: 5px;
+}
+.laptop-container.pressed {
+  transform: scale(0.95);
+  transition: transform 0.1s ease;
 }

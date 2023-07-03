@@ -7,6 +7,9 @@ interface LayoutProps {
   playerInfo: any;
 }
 function Layout(props: LayoutProps) {
+
+
+  
   return (
     <div className="container">
       <div className="container-upgrades"></div>
