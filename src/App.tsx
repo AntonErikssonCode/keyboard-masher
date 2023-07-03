@@ -55,9 +55,8 @@ function App() {
   return (
     <div className="App">
       <Layout handleMashClick={handleMashClick} playerInfo={playerInfo}/>
-      {playerInfo.currentMashes}
-    
-      <button onClick={resetPlayerCookie}>Reset Player</button>
+  {/* 
+      <button onClick={resetPlayerCookie}>Reset Player</button> */}
     </div>
   );
 }
