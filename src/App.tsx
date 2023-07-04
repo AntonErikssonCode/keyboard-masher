@@ -7,15 +7,19 @@ function App() {
   // Config Consts
   const expirationTimeInDays = 1;
   const defaultPlayer = {
-    currentMashes: 0,
-    totalMashes: 0,
+    currentMashes: 1000000000,
+    totalMashes: 1000000000,
     mashPerSec: 0,
     upgradesOwned: [
-      { name: "HTML", number: 14, upgrades: 2 },
-      { name: "CSS", number: 2, upgrades: 1 },
+      { name: "HTML", number: 0, perks: 0, bought: true },
+      { name: "CSS", number: 0, perks: 0, bought: true },
+      { name: "JavaScript", number: 0, perks: 0, bought: false },
+      { name: "Python", number: 0, perks: 0, bought: false },
+      { name: "Java", number: 0, perks: 0, bought: false },
     ],
   };
-  // DEFAULT PLAYER INFO FOR NEW GAME
+
+  const [playerInfoLoaded, setPlayerInfoLoaded] = useState(false);
   const [playerInfo, setPlayerInfo] = useState(defaultPlayer);
 
   // LOAD INITIAL GAME DATA
@@ -25,10 +29,12 @@ function App() {
       // Cookie already exists, so parse the JSON string back into an object
       const savedPlayerInfo = JSON.parse(cookieValue);
       setPlayerInfo(savedPlayerInfo);
+      setPlayerInfoLoaded(true);
     } else {
       // Cookie doesn't exist, so set it with the initial playerInfo object
       const jsonString = JSON.stringify(playerInfo);
       Cookies.set("playerInfo", jsonString, { expires: expirationTimeInDays }); // Set expiration to 1 day
+      setPlayerInfoLoaded(true);
     }
   }, []);
 
@@ -37,26 +43,39 @@ function App() {
     const updatedPlayerInfo = {
       ...playerInfo,
       totalMashes: playerInfo.totalMashes + 1,
-      currentMashes: playerInfo.totalMashes + 1,
+      currentMashes: playerInfo.currentMashes + 1,
     };
     setPlayerInfo(updatedPlayerInfo);
-    const jsonString = JSON.stringify(updatedPlayerInfo);
-    Cookies.set("playerInfo", jsonString, { expires: expirationTimeInDays }); // Set expiration to 1 day
   };
+
+  useEffect(() => {
+    if (playerInfoLoaded) {
+      const jsonString = JSON.stringify(playerInfo);
+      Cookies.set("playerInfo", jsonString, { expires: expirationTimeInDays });
+    }
+  }, [playerInfoLoaded, playerInfo]);
 
   // RESETS COOKIE AND PLAYER STATE
   const resetPlayerCookie = () => {
- 
     setPlayerInfo(defaultPlayer);
     const jsonString = JSON.stringify(defaultPlayer);
     Cookies.set("playerInfo", jsonString, { expires: expirationTimeInDays }); // Set expiration to 1 day
   };
 
+  function handleSetPlayerInfo(info:any){
+    setPlayerInfo(info)
+  }
+
   return (
     <div className="App">
-      <Layout handleMashClick={handleMashClick} playerInfo={playerInfo}/>
-  {/* 
-      <button onClick={resetPlayerCookie}>Reset Player</button> */}
+      {playerInfoLoaded ? (
+        <>
+          <Layout handleMashClick={handleMashClick} playerInfo={playerInfo} handleSetPlayerInfo={handleSetPlayerInfo}/>
+          <button onClick={resetPlayerCookie}>Reset Player</button>
+        </>
+      ) : (
+        <div>Loading...</div>
+      )}
     </div>
   );
 }

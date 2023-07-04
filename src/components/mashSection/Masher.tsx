@@ -20,7 +20,6 @@ function Masher(props: MasherProps) {
 
   function handleMash() {
     props.handleMashClick();
-    console.log("click")
   }
 
   return (
