@@ -16,7 +16,6 @@ function Layout(props: LayoutProps) {
     <div className="container">
       <div className="container-upgrades">
         {upgradesConfig.map((upgrade, index) => {
-          console.dir(upgrade)
           return (
             <Upgrade
               key={"upgrade" + index}
@@ -31,6 +30,7 @@ function Layout(props: LayoutProps) {
         <Masher
           handleMashClick={props.handleMashClick}
           currentMashes={props.playerInfo.currentMashes}
+          mashPerSec={props.playerInfo.mashPerSec}
         />
       </div>
       <div className="container-stats"></div>

@@ -1,27 +1,24 @@
-.masher-background{
+.masher-background {
   width: 100%;
-  height:  auto;
+  height: auto;
 
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 4rem;
-
-}.laptop-container{
-  
-  width: 80%;
-  height:  auto;
-  transition: transform 0.05s ease;
-
+  gap: 1rem;
 }
-.laptop-img{
+.laptop-container {
+  width: 80%;
+  height: auto;
+  transition: transform 0.05s ease;
+}
+.laptop-img {
   width: 100%;
-  height:  100%;
-
+  height: 100%;
 }
 .currentMashes {
-  background-color: var( --primary-color);
+  background-color: var(--primary-color);
   color: #fff;
   padding: 16px;
   font-size: 2rem;
@@ -29,9 +26,24 @@
 
   min-width: 4rem;
   text-align: center;
-  
 }
 .laptop-container.pressed {
   transform: scale(0.95);
   transition: transform 0.1s ease;
+}
+
+.mashPerSec {
+  background-color: var(--secondary-color);
+  color: #fff;
+  padding: 8px 16px;
+  font-size: 1.2rem;
+  font-weight: bold;
+
+  min-width: 2rem;
+  text-align: center;
+}
+
+.masher-flavortext{
+  color: #a5a5a5;
+  font-size: 1.2rem;
 }

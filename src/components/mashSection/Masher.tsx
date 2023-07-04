@@ -4,6 +4,7 @@ import "./Masher.css";
 interface MasherProps {
   handleMashClick: () => void;
   currentMashes: number;
+  mashPerSec: number;
 }
 
 function Masher(props: MasherProps) {
@@ -29,11 +30,15 @@ function Masher(props: MasherProps) {
       onMouseUp={handleMouseUp}
       onClick={handleMash}
     >
-      <div className="currentMashes crazy-box-shadow default-border">{props.currentMashes}</div>
+      <div className="currentMashes crazy-box-shadow default-border">{Math.ceil(props.currentMashes)+ " Mashes"}</div>
+      <div className="mashPerSec crazy-box-shadow default-border">{props.mashPerSec + " Mashes/s"}</div>
+
       <div className={`laptop-container ${isPressed ? "pressed" : ""}`} >
         <img src={laptop} className="laptop-img " alt="laptop" />
       </div>
+      <p className="masher-flavortext">Mash The Keyboard, Become A Programmer</p>
     </div>
+    
   );
 }
 

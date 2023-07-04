@@ -1,4 +1,4 @@
 const balanceConfig = {
-  upgradesMutiplier:1.15
+  upgradesMutiplier:1.3
 }
 export default balanceConfig;

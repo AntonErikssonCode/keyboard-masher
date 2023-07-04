@@ -65,15 +65,13 @@ function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo }: UpgradeProps) {
     });
 
     const newPrice = Math.ceil(
-      (upgrade.cost * mutiplier) ^ balanceConfig.upgradesMutiplier
+      mutiplier === 0 ? upgrade.cost : upgrade.cost * Math.pow(mutiplier, balanceConfig.upgradesMutiplier)
     );
-
     return newPrice;
   }
 
   function handleBuy() {
     if (playerInfo.currentMashes >= newCost) {
-      console.dir("afford");
       const updatedPlayerInfo = {
         ...playerInfo,
         currentMashes: Math.ceil(playerInfo.currentMashes - newCost),
@@ -125,8 +123,8 @@ function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo }: UpgradeProps) {
         onMouseUp={handleMouseUp}
         onClick={handleBuy}
       >
-        <h3>{"PROGRAM IN " + name}</h3>
-        <h4>{newCost}</h4>
+        <h3>{"Code in " + name}</h3>
+        <h4>{"Cost " +newCost}</h4>
       </button>
     </div>
   );

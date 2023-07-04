@@ -5,6 +5,7 @@
     difficulty: "Beginner",
     description: "Build Website Structures",
     cost: 10,
+    mashPerSec: 0.2, 
     areas: ["Web Development", "Front-end Development"],
     perks: [
       {
@@ -32,6 +33,7 @@
     difficulty: "Beginner",
     description: "Style Website Elements",
     cost: 20,
+    mashPerSec: 0.5, 
     areas: ["Web Development", "Front-end Development"],
     perks: [
       {
@@ -59,6 +61,7 @@
     difficulty: "Beginner",
     description: "Make Websites Interactive",
     cost: 30,
+    mashPerSec: 1, 
     areas: ["Web Development", "Front-end Development"],
     perks: [
       {
@@ -86,6 +89,7 @@
     difficulty: "Beginner",
     description: "General-purpose Programming",
     cost: 40,
+    mashPerSec: 3, 
     areas: ["Software Development", "Data Analysis"],
     perks: [
       {
@@ -113,6 +117,7 @@
     difficulty: "Beginner",
     description: "Build Scalable Applications",
     cost: 50,
+    mashPerSec: 5, 
     areas: ["Software Development", "Back-end Development"],
     perks: [
       {
