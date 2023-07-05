@@ -13,7 +13,9 @@
   gap: 1rem;
   cursor: pointer;
   justify-content: space-between;
+ 
 }
+
 .upgrades-container-1 {
   display: flex;
   flex-direction: row;
@@ -99,21 +101,48 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 0.5rem;
+  animation: slideIn 1s ease-out 0s ;
+  position: relative;
+   /* Initial position outside the screen */
+  transition: all 0.5s ease-out;
 }
+/* 
 @keyframes slideIn {
   from {
-    transform: translateX(100%); /* Slide in from right */
+    transform: translateX(-100%);
     opacity: 0;
   }
   to {
-    transform: translateX(0); /* Slide to the original position */
+    transform: translateX(0); 
     opacity: 1;
   }
 }
-
+ */
 .upgrades-mashesPerSec{
   font-weight: 400;
 }
 .upgrades-description{
   font-weight: 500;
+}
+
+.slide-enter {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.slide-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.slide-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.slide-exit-active {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 300ms, transform 300ms;
 }
