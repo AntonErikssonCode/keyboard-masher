@@ -36,6 +36,7 @@ function Layout(props: LayoutProps) {
           handleMashClick={props.handleMashClick}
           currentMashes={props.playerInfo.currentMashes}
           mashPerSec={props.playerInfo.mashPerSec}
+          mashBonus={props.playerInfo.mashBonus}
         />
       </div>
       <div className="container-stats"></div>

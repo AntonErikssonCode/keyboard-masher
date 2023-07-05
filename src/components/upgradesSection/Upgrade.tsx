@@ -15,11 +15,10 @@ function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo }: UpgradeProps) {
   const { name, description, perks, difficulty, mashPerSec } = upgrade;
   const [isPressed, setIsPressed] = useState(false);
   const [mps, setMps] = useState(0);
-  const [newCost, setNewCost] = useState(getCost(playerInfo, upgrade));
+  const [newCost, setNewCost] = useState(upgrade.cost); //getCost(playerInfo, upgrade)
   const [bought, setBought] = useState(getBought(playerInfo, upgrade));
   const [open, setOpen] = useState(false);
 
-  
   function handleOpen() {
     setOpen(!open);
   }
@@ -38,7 +37,7 @@ function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo }: UpgradeProps) {
 
   useEffect(() => {
     setGetNumberOfOwnedPerks(getNumberOfOwnedPerks(playerInfo, upgrade));
-    setNewCost(getCost(playerInfo, upgrade));
+
     setBought(getBought(playerInfo, upgrade));
     setMps(showTwoDecimals(getMPS(mashPerSec, bought)));
   }, [playerInfo]);
@@ -96,17 +95,13 @@ function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo }: UpgradeProps) {
       }
     });
 
-    const newPrice = Math.ceil(
-      mutiplier === 0
-        ? upgrade.cost
-        : upgrade.cost * Math.pow(mutiplier, balanceConfig.upgradesMutiplier)
-    );
+    const newPrice = Math.ceil(newCost * balanceConfig.upgradesMutiplier);
+
+    setNewCost(newPrice);
     return newPrice;
   }
 
   function handleBuy() {
-
-
     if (playerInfo.currentMashes >= newCost) {
       const updatedPlayerInfo = {
         ...playerInfo,
@@ -122,34 +117,28 @@ function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo }: UpgradeProps) {
           return upgradeOwned;
         }),
       };
-
+      getCost(playerInfo, upgrade);
       handleSetPlayerInfo(updatedPlayerInfo);
     }
   }
- 
 
   return (
     <div className="upgradesSection">
       <div
         className="upgrades-container crazy-box-shadow default-border"
         onClick={handleOpen}
-
       >
-      
         <div className="upgrades-container-1">
           <div className="upgrades-container-2">
             {bought ? (
               <>
-              <h3 className="upgrade-title">
-                {name }
-              </h3>
-              <h4>  {bought + " Days Practice"}</h4>
+                <h3 className="upgrade-title">{name}</h3>
+                <h4> {bought + " Days Practice"}</h4>
               </>
             ) : (
               <h3 className="upgrade-title">{name + "  "}</h3>
             )}
 
-            
             {bought ? (
               <h4 className="upgrades-mashesPerSec">
                 {"+ " + mps + " Mashes/s"}

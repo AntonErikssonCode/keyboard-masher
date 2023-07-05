@@ -13,9 +13,35 @@
   height: auto;
   transition: transform 0.05s ease;
 }
-.laptop-img {
+.laptop-img,.fist-container {
   width: 100%;
   height: 100%;
+}
+.fist-img{
+  width: 128px ;
+  height: 128px;
+ 
+}
+.fist-container{
+  opacity: 1;
+  z-index: 5;
+  animation: fadeOut 1s;
+
+}
+@keyframes fadeOut {
+  0%{
+    opacity: 1;
+
+  }
+  90%{
+    opacity: 1;
+
+  }
+  100%{
+    opacity: 0;
+
+  }
+  
 }
 .currentMashes {
   background-color: var(--primary-color);

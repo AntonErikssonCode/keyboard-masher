@@ -3,12 +3,13 @@ import Cookies from "js-cookie";
 import "./App.css";
 import Layout from "./components/Layout";
 import upgradesConfig from "./config/upgradesConfig";
+import balanceConfig from "./config/balanceConfig";
 
 function App() {
   // CONFIG CONSTS
   const expirationTimeInDays = 1;
   const defaultPlayer = {
-    currentMashes: 10000,
+    currentMashes: 0,
     totalMashes: 0,
     mashPerSec: 0,
     mashBonus: 1,
@@ -53,6 +54,46 @@ function App() {
         perksOwned: [{ owned: false }, { owned: false }, { owned: false }],
         mutiplier: 1,
       },
+      {
+        name: "Ruby",
+        number: 0,
+        perks: 0,
+        bought: false,
+        perksOwned: [{ owned: false }, { owned: false }, { owned: false }],
+        mutiplier: 1,
+      },
+      {
+        name: "C++",
+        number: 0,
+        perks: 0,
+        bought: false,
+        perksOwned: [{ owned: false }, { owned: false }, { owned: false }],
+        mutiplier: 1,
+      },
+      {
+        name: "Swift",
+        number: 0,
+        perks: 0,
+        bought: false,
+        perksOwned: [{ owned: false }, { owned: false }, { owned: false }],
+        mutiplier: 1,
+      },
+      {
+        name: "Go",
+        number: 0,
+        perks: 0,
+        bought: false,
+        perksOwned: [{ owned: false }, { owned: false }, { owned: false }],
+        mutiplier: 1,
+      },
+      {
+        name: "Rust",
+        number: 0,
+        perks: 0,
+        bought: false,
+        perksOwned: [{ owned: false }, { owned: false }, { owned: false }],
+        mutiplier: 1,
+      },
     ],
   };
 
@@ -60,7 +101,7 @@ function App() {
   const [playerInfoLoaded, setPlayerInfoLoaded] = useState(false);
   const [playerInfo, setPlayerInfo] = useState(defaultPlayer);
   const [upgradeOpen, setUpgradeOpen] = useState({ index: 0, open: false });
-
+  
   // USEEFFECT
   // LOAD INITIAL GAME DATA
   useEffect(() => {
@@ -87,7 +128,6 @@ function App() {
       const jsonString = JSON.stringify(playerInfo);
       Cookies.set("playerInfo", jsonString, { expires: expirationTimeInDays });
       console.dir("Set Cookie");
-      console.dir(playerInfo);
     }
   }, [playerInfoLoaded, playerInfo]);
 
@@ -104,15 +144,17 @@ function App() {
   }, [playerInfo.upgradesOwned]);
 
   // INCREMENT totalMashes AND currentMashes EVERY SECOND BASED ON mashPerSec
+  const updateTime = balanceConfig.timeUpdateModfier;
   useEffect(() => {
+    
     if (playerInfoLoaded) {
       const interval = setInterval(() => {
         setPlayerInfo((prevPlayerInfo) => ({
           ...prevPlayerInfo,
-          totalMashes: prevPlayerInfo.totalMashes + playerInfo.mashPerSec,
-          currentMashes: prevPlayerInfo.currentMashes + playerInfo.mashPerSec,
+          totalMashes: prevPlayerInfo.totalMashes + (playerInfo.mashPerSec/updateTime),
+          currentMashes: prevPlayerInfo.currentMashes + (playerInfo.mashPerSec/updateTime),
         }));
-      }, 1000);
+      }, 1000/updateTime);
 
       return () => clearInterval(interval);
     }
@@ -133,7 +175,6 @@ function App() {
     let mashPerSec = 0;
 
     upgradesOwned.forEach((upgrade) => {
-      console.dir(upgrade)
       const upgradeData = upgradesConfig.find(
         (config) => config.name === upgrade.name
       );

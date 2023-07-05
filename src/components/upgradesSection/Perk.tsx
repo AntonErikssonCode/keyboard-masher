@@ -54,7 +54,6 @@ function Perk({
           handleSetPlayerInfo(updatedPlayerInfo)
           break;
         case "mutiply":
-          console.dir(bonus);
           break;
 
         case "secret":

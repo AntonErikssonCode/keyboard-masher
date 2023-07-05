@@ -1,17 +1,27 @@
 import React, { useState } from "react";
 import "./Masher.css";
 import showTwoDecimals from "../../utlity/utilityFunctions";
+
+interface SpawnedObject {
+  id: number;
+  x: number;
+  y: number;
+}
+
 interface MasherProps {
   handleMashClick: () => void;
   currentMashes: number;
   mashPerSec: number;
+  mashBonus: number;
 }
 
 function Masher(props: MasherProps) {
   const laptop = require("../../assets/laptopClean.png");
   const [isPressed, setIsPressed] = useState(false);
-  const [spawnedObject, setSpawnedObject] = useState({ x: 0, y: 0 });
-  const fistIMG = require("../../assets/fist.png")
+  const [spawnedObjects, setSpawnedObjects] = useState<SpawnedObject[]>([]);
+  const fistIMG = require("../../assets/fist.png");
+  const maxObjects = 3;
+
   function handleMouseDown() {
     setIsPressed(true);
   }
@@ -20,10 +30,9 @@ function Masher(props: MasherProps) {
     setIsPressed(false);
   }
 
-  function handleMash( event: React.MouseEvent) {
+  function handleMash(event: React.MouseEvent) {
     props.handleMashClick();
-    const { clientX, clientY } = event;
-    setSpawnedObject({ x: clientX, y: clientY });
+  
   }
 
   return (
@@ -33,15 +42,17 @@ function Masher(props: MasherProps) {
       onMouseUp={handleMouseUp}
       onClick={handleMash}
     >
-       {spawnedObject && (
+    {/*   {spawnedObjects.map((obj) => (
         <div
+          key={obj.id}
           className="spawned-object"
-          style={{ left: spawnedObject.x, top: spawnedObject.y }}
+          style={{ left: obj.x, top: obj.y }}
         >
-          Content of the spawned object
+          <div className={`fist-container`}>
+            <img src={fistIMG} className="fist-img" alt="fist" />
+          </div>
         </div>
-      )}
-
+      ))} */}
 
       <div className="currentMashes crazy-box-shadow default-border">
         {showTwoDecimals(props.currentMashes) + " Mashes"}
@@ -51,11 +62,9 @@ function Masher(props: MasherProps) {
       </div>
 
       <div className={`laptop-container ${isPressed ? "pressed" : ""}`}>
-        <img src={laptop} className="laptop-img " alt="laptop" />
+        <img src={laptop} className="laptop-img" alt="laptop" draggable={false}/>
       </div>
-      <p className="masher-flavortext">
-        Mash The Keyboard, Become A Programmer
-      </p>
+      <p className="masher-flavortext">Mash The Keyboard, Become A Programmer</p>
     </div>
   );
 }
