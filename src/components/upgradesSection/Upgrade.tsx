@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./upgrade.css";
 import balanceConfig from "../../config/balanceConfig";
 import Perk from "./Perk";
@@ -19,6 +19,7 @@ function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo }: UpgradeProps) {
   const [bought, setBought] = useState(getBought(playerInfo, upgrade));
   const [open, setOpen] = useState(false);
 
+  
   function handleOpen() {
     setOpen(!open);
   }
@@ -104,6 +105,8 @@ function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo }: UpgradeProps) {
   }
 
   function handleBuy() {
+
+
     if (playerInfo.currentMashes >= newCost) {
       const updatedPlayerInfo = {
         ...playerInfo,
@@ -123,24 +126,30 @@ function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo }: UpgradeProps) {
       handleSetPlayerInfo(updatedPlayerInfo);
     }
   }
+ 
 
   return (
     <div className="upgradesSection">
       <div
         className="upgrades-container crazy-box-shadow default-border"
         onClick={handleOpen}
+
       >
+      
         <div className="upgrades-container-1">
           <div className="upgrades-container-2">
             {bought ? (
+              <>
               <h3 className="upgrade-title">
-                {name + "  (" + bought + " Days)"}
+                {name }
               </h3>
+              <h4>  {bought + " Days Practice"}</h4>
+              </>
             ) : (
               <h3 className="upgrade-title">{name + "  "}</h3>
             )}
 
-            <h4 className="upgrades-description">{description}</h4>
+            
             {bought ? (
               <h4 className="upgrades-mashesPerSec">
                 {"+ " + mps + " Mashes/s"}

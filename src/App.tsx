@@ -17,15 +17,17 @@ function App() {
         name: "HTML",
         number: 0,
         perks: 0,
-        bought: true,
+        bought: false,
         perksOwned: [{ owned: false }, { owned: false }, { owned: false }],
+        mutiplier: 1,
       },
       {
         name: "CSS",
         number: 0,
         perks: 0,
-        bought: true,
+        bought: false,
         perksOwned: [{ owned: false }, { owned: false }, { owned: false }],
+        mutiplier: 1,
       },
       {
         name: "JavaScript",
@@ -33,6 +35,7 @@ function App() {
         perks: 0,
         bought: false,
         perksOwned: [{ owned: false }, { owned: false }, { owned: false }],
+        mutiplier: 1,
       },
       {
         name: "Python",
@@ -40,6 +43,7 @@ function App() {
         perks: 0,
         bought: false,
         perksOwned: [{ owned: false }, { owned: false }, { owned: false }],
+        mutiplier: 1,
       },
       {
         name: "Java",
@@ -47,6 +51,7 @@ function App() {
         perks: 0,
         bought: false,
         perksOwned: [{ owned: false }, { owned: false }, { owned: false }],
+        mutiplier: 1,
       },
     ],
   };
@@ -82,6 +87,7 @@ function App() {
       const jsonString = JSON.stringify(playerInfo);
       Cookies.set("playerInfo", jsonString, { expires: expirationTimeInDays });
       console.dir("Set Cookie");
+      console.dir(playerInfo);
     }
   }, [playerInfoLoaded, playerInfo]);
 
@@ -93,6 +99,7 @@ function App() {
         mashPerSec: calculateMashPerSec(),
       };
       setPlayerInfo(updatedPlayerInfo);
+      
     }
   }, [playerInfo.upgradesOwned]);
 
@@ -126,11 +133,15 @@ function App() {
     let mashPerSec = 0;
 
     upgradesOwned.forEach((upgrade) => {
+      console.dir(upgrade)
       const upgradeData = upgradesConfig.find(
         (config) => config.name === upgrade.name
       );
       if (upgradeData) {
-        mashPerSec += upgradeData.mashPerSec * upgrade.number;
+        const upgradeModifer = upgrade.mutiplier * upgrade.number;
+  
+        mashPerSec +=
+          upgradeData.mashPerSec * upgradeModifer ;
       }
     });
     return mashPerSec;

@@ -9,6 +9,7 @@ const upgradesConfig = [
     perks: [
       {
         name: "Basic Blog",
+        parent:"HTML",
         cost: 10,
         description: "Create a simple blog using HTML.",
         areas: ["Content Creation", "Web Publishing"],
@@ -17,6 +18,7 @@ const upgradesConfig = [
       },
       {
         name: "Webpage from the 90s",
+        parent:"HTML",
         cost: 15,
         description: "Design a webpage with a nostalgic 90s look using HTML.",
         areas: ["Retro Web Design"],
@@ -24,6 +26,7 @@ const upgradesConfig = [
       },
       {
         name: "Responsive Layout",
+        parent:"HTML",
         cost: 30,
         description:
           "Make your website adapt to different screen sizes using CSS media queries.",
@@ -42,6 +45,7 @@ const upgradesConfig = [
     perks: [
       {
         name: "Animated Transitions",
+        parent:"CSS",
         cost: 10,
         description:
           "Add engaging animations and transitions to elements using CSS keyframes.",
@@ -50,6 +54,7 @@ const upgradesConfig = [
       },
       {
         name: "CSS Grid Layout",
+        parent:"CSS",
         cost: 15,
         description:
           "Create complex grid-based layouts with ease using CSS grid.",
@@ -58,6 +63,7 @@ const upgradesConfig = [
       },
       {
         name: "Flexbox",
+        parent:"CSS",
         cost: 30,
         description:
           "Efficiently arrange and align elements using CSS flexbox.",
@@ -76,6 +82,7 @@ const upgradesConfig = [
     perks: [
       {
         name: "Form Validation",
+        parent:"JavaScript",
         cost: 10,
         description: "Validate user inputs in forms using JavaScript.",
         areas: ["Data Validation", "Form Handling"],
@@ -83,6 +90,7 @@ const upgradesConfig = [
       },
       {
         name: "DOM Manipulation",
+        parent:"JavaScript",
         cost: 15,
         description:
           "Dynamically modify and interact with website elements using JavaScript and the Document Object Model (DOM).",
@@ -91,6 +99,7 @@ const upgradesConfig = [
       },
       {
         name: "AJAX Requests",
+        parent:"JavaScript",
         cost: 30,
         description:
           "Fetch and update data from the server asynchronously using JavaScript.",
@@ -109,6 +118,7 @@ const upgradesConfig = [
     perks: [
       {
         name: "Data Analysis",
+        parent:"Python",
         cost: 10,
         description:
           "Perform data manipulation, exploration, and analysis using Python libraries like Pandas and NumPy.",
@@ -117,6 +127,7 @@ const upgradesConfig = [
       },
       {
         name: "Web Scraping",
+        parent:"Python",
         cost: 15,
         description:
           "Extract data from websites programmatically using Python libraries like BeautifulSoup.",
@@ -125,6 +136,7 @@ const upgradesConfig = [
       },
       {
         name: "Machine Learning",
+        parent:"Python",
         cost: 30,
         description:
           "Build and train machine learning models using libraries like scikit-learn and TensorFlow.",
@@ -143,6 +155,7 @@ const upgradesConfig = [
     perks: [
       {
         name: "Object-Oriented Programming",
+        parent:"Java",
         cost: 10,
         description:
           "Learn the principles of object-oriented programming using Java.",
@@ -151,6 +164,7 @@ const upgradesConfig = [
       },
       {
         name: "Database Integration",
+        parent:"Java",
         cost: 15,
         description:
           "Connect and interact with databases using Java database connectivity (JDBC).",
@@ -159,6 +173,7 @@ const upgradesConfig = [
       },
       {
         name: "Web Services",
+        parent:"Java",
         cost: 30,
         description:
           "Build and consume web services using Java frameworks like Spring and JAX-RS.",

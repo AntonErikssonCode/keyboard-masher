@@ -38,10 +38,35 @@ function Perk({
     const slectedPerk = slectedUpgrade.perksOwned[index].owned;
     return slectedPerk;
   }
-  useEffect(() => {
-    setIsBought(isPerkBought());
-  }, [playerInfo]);
+ 
 
+  function addPerkBonus(perk: any) {
+    const upgradeName = perk.parent;
+    perk.bonus.forEach((bonus: any, index: number) => {
+      const type = bonus.type;
+      switch (type) {
+        case "mash":
+          const addMash = bonus.mash;
+          const updatedPlayerInfo = {
+            ...playerInfo,
+            mashBonus: playerInfo.mashBonus + addMash,
+          };
+          handleSetPlayerInfo(updatedPlayerInfo)
+          break;
+        case "mutiply":
+          console.dir(bonus);
+          break;
+
+        case "secret":
+          break;
+
+        default:
+          break;
+      }
+    });
+  }
+  
+ 
   function handleBuyPerk() {
     setIsBought(true);
 
@@ -51,7 +76,9 @@ function Perk({
           if (upgrade.name === upgradeName) {
             const updatedPerksOwned = upgrade.perksOwned.map(
               (perkOwned: any, perkIndex: number) => {
+           
                 if (perkIndex === index) {
+                  
                   return { owned: true };
                 }
                 return perkOwned;
@@ -82,9 +109,8 @@ function Perk({
     >
       <div className="perk-info">
         <h4>{perk.name}</h4>
-        {perk.bonus.map((bonus:any) => {
-
-          return <h5>{bonus.bonusText}</h5>;
+        {perk.bonus.map((bonus: any, index: number) => {
+          return <h5 key={"perk-info" + index}>{bonus.bonusText}</h5>;
         })}
       </div>
 
