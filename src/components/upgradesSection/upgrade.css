@@ -1,3 +1,8 @@
+.upgradesSection {
+  display: flex;
+  width: 100%;
+  gap: 0.5rem;
+}
 .upgrades-container {
   width: 50%;
   height: auto;
@@ -15,12 +20,10 @@
   min-height: 70px;
 }
 
-
 .upgrades-container-3 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
- 
 }
 
 .upgrade-bought {
@@ -32,37 +35,84 @@
 }
 .upgrade-bought-true {
   background-color: var(--accent-color);
-  
 }
 .button-code {
   border: none;
-/*   background-color: var(--background-color); */
   background-color: var(--accent-color);
   color: var(--text-color);
   padding: 1rem;
   cursor: pointer;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-gap: 0.5rem;
-transition: transform 0.1s ease;
-
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  transition: transform 0.1s ease;
 }
 
-.button-code:hover{
+.button-code-glow {
+  box-shadow: 0 0 -3px -3px var(--accent-color-2);
+
+  animation: glow  ease-in-out 2s infinite;
+}
+.button-code-glow:hover::after {
+  opacity: 1;
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 -3px -3px var(--accent-color-2);
+  }
+  50% {
+    box-shadow: 0 0 5px 5px var(--accent-color-2);
+  }
+  100% {
+    box-shadow: 0 0 -3px -3px var(--accent-color-2);
+  }
+}
+.cant-afford-upgrade{
+  background-color: var(--accent-color-3);
+}
+
+.button-code:hover {
   transform: scale(1.02);
 }
 .button-code.pressed {
   transform: scale(0.95);
-
 }
 
-.button-code  h3{
+.button-code h3 {
   font-size: 1.2rem;
-
 }
-.button-code  h4{
+.button-code h4 {
   font-size: 1rem;
+}
+
+.perks-container {
+  width: 50%;
+  height: calc(100%-1rem);
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+.perk {
+  flex-basis: 33.33%;
+  display: flex;
+
+  background-color: var(--background-color2);
+  color: white;
+  padding: 0.2rem 0.5rem;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%); /* Slide in from right */
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0); /* Slide to the original position */
+    opacity: 1;
+  }
 }

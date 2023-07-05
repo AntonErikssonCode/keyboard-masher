@@ -5,7 +5,7 @@ import Layout from "./components/Layout";
 import upgradesConfig from "./config/upgradesConfig";
 
 function App() {
-  // Config Consts
+  // CONFIG CONSTS
   const expirationTimeInDays = 1;
   const defaultPlayer = {
     currentMashes: 0,
@@ -19,9 +19,13 @@ function App() {
       { name: "Java", number: 0, perks: 0, bought: false },
     ],
   };
+
+  // STATES 
   const [playerInfoLoaded, setPlayerInfoLoaded] = useState(false);
   const [playerInfo, setPlayerInfo] = useState(defaultPlayer);
+  const [upgradeOpen, setUpgradeOpen] = useState({index: 0, open: false});
 
+  // USEEFFECT
   // LOAD INITIAL GAME DATA
   useEffect(() => {
     const cookieValue = Cookies.get("playerInfo");
@@ -40,15 +44,6 @@ function App() {
       console.dir("No Cookie");
     }
   }, []);
-
-  // INCREMENT totalMashes AND currentMashes
-  const handleMashClick = () => {
-    setPlayerInfo((prevPlayerInfo) => ({
-      ...prevPlayerInfo,
-      totalMashes: prevPlayerInfo.totalMashes + 1,
-      currentMashes: prevPlayerInfo.currentMashes + 1,
-    }));
-  };
 
   // SAVE playerInfo cookie TO COOKIE WHEN IT CHANGES
   useEffect(() => {
@@ -85,6 +80,7 @@ function App() {
     }
   }, [playerInfo.mashPerSec]);
 
+  // FUNCTIONS
   // RESETS cookie AND playerInfo
   const resetPlayerCookie = () => {
     setPlayerInfo(defaultPlayer);
@@ -93,6 +89,7 @@ function App() {
     }); // Set expiration to 1 day
   };
 
+  // RETURNS mashPerSecond BASED ON upgradesOwned
   function calculateMashPerSec() {
     const { upgradesOwned } = playerInfo;
     let mashPerSec = 0;
@@ -105,10 +102,22 @@ function App() {
         mashPerSec += upgradeData.mashPerSec * upgrade.number;
       }
     });
-
     return mashPerSec;
   }
 
+  // HANDLES
+  // INCREMENT totalMashes AND currentMashes
+  const handleMashClick = () => {
+    setPlayerInfo((prevPlayerInfo) => ({
+      ...prevPlayerInfo,
+      totalMashes: prevPlayerInfo.totalMashes + 1,
+      currentMashes: prevPlayerInfo.currentMashes + 1,
+    }));
+  };
+  const handleSetUpgradeOpen = (index: number, open: boolean) => {
+    setUpgradeOpen({index: index,  open: open})
+  };
+  // RETURN APP
   return (
     <div className="App">
       {playerInfoLoaded ? (
@@ -117,6 +126,9 @@ function App() {
             handleMashClick={handleMashClick}
             playerInfo={playerInfo}
             handleSetPlayerInfo={setPlayerInfo}
+            upgradeOpen={upgradeOpen}
+            handleSetUpgradeOpen={handleSetUpgradeOpen}
+            
           />
           <button onClick={resetPlayerCookie}>Reset Player</button>
         </>

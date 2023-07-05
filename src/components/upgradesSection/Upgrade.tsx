@@ -6,12 +6,25 @@ interface UpgradeProps {
   upgrade: any;
   playerInfo: any;
   handleSetPlayerInfo: (info: any) => void;
+  upgradeOpen: any;
+  handleSetUpgradeOpen: (index: number, open: boolean) => void;
+  index: number;
 }
 function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo }: UpgradeProps) {
   const { name, description, perks, difficulty } = upgrade;
   const [isPressed, setIsPressed] = useState(false);
   const [newCost, setNewCost] = useState(getCost(playerInfo, upgrade));
   const [bought, setBought] = useState(getBought(playerInfo, upgrade));
+  const [open, setOpen] = useState(false);
+
+  function handleOpen() {
+    setOpen(true);
+  }
+
+  function handleClose() {
+    setOpen(false);
+  }
+
   function handleMouseDown() {
     setIsPressed(true);
   }
@@ -65,7 +78,9 @@ function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo }: UpgradeProps) {
     });
 
     const newPrice = Math.ceil(
-      mutiplier === 0 ? upgrade.cost : upgrade.cost * Math.pow(mutiplier, balanceConfig.upgradesMutiplier)
+      mutiplier === 0
+        ? upgrade.cost
+        : upgrade.cost * Math.pow(mutiplier, balanceConfig.upgradesMutiplier)
     );
     return newPrice;
   }
@@ -90,42 +105,68 @@ function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo }: UpgradeProps) {
       handleSetPlayerInfo(updatedPlayerInfo);
     }
   }
-  return (
-    <div className="upgrades-container crazy-box-shadow default-border">
-      <div className="upgrades-container-1">
-        <div className="upgrades-container-2">
-          {bought ? <h3>{name + " (" + bought + "Days)"}</h3> : <h3>{name}</h3>}
 
-          <h4>{description}</h4>
+  return (
+    <div className="upgradesSection">
+      <div className="upgrades-container crazy-box-shadow default-border">
+        <div className="upgrades-container-1">
+          <div className="upgrades-container-2">
+            {bought ? (
+              <h3>{name + " (" + bought + "Days)"}</h3>
+            ) : (
+              <h3>{name}</h3>
+            )}
+
+            <h4>{description}</h4>
+          </div>
+          <div className="upgrades-container-3">
+            {perks.map((perk: any, index: number) => {
+              let active = false;
+              if (index + 1 <= numberOfPerks) {
+                active = true;
+              }
+              return (
+                <div
+                  key={name + index}
+                  className={`upgrade-bought ${
+                    active ? "upgrade-bought-true" : ""
+                  } `}
+                ></div>
+              );
+            })}
+          </div>
         </div>
-        <div className="upgrades-container-3">
-          {perks.map((perk: any, index: number) => {
-            let active = false;
-            if (index + 1 <= numberOfPerks) {
-              active = true;
-            }
-            return (
-              <div
-                key={name + index}
-                className={`upgrade-bought ${
-                  active ? "upgrade-bought-true" : ""
-                } `}
-              ></div>
-            );
-          })}
-        </div>
+        <button
+          className={`button-code crazy-box-shadow default-border ${
+            playerInfo.currentMashes >= newCost ? "button-code-glow" : "cant-afford-upgrade"
+          }  ${
+            isPressed ? "pressed" : ""
+          }  `}
+          onMouseDown={handleMouseDown}
+          onMouseUp={handleMouseUp}
+          onClick={handleBuy}
+        >
+          <h3 className="text-color-black">{"Code in " + name}</h3>
+          <h4 className="text-color-black">{"Cost " + newCost + " Mashes"}</h4>
+        </button>
       </div>
-      <button
-        className={`button-code crazy-box-shadow default-border ${
-          isPressed ? "pressed" : ""
-        }  `}
-        onMouseDown={handleMouseDown}
-        onMouseUp={handleMouseUp}
-        onClick={handleBuy}
-      >
-        <h3 className="text-color-black">{"Code in " + name}</h3>
-        <h4 className="text-color-black">{"Cost " + newCost + " Mashes"}</h4>
-      </button>
+      <div className="perks-container">
+        {perks.map((perk: any, index: number) => {
+          console.dir(perk);
+          return (
+            <div
+              key={perk.name + index}
+              className="perk default-border crazy-box-shadow"
+            >
+
+              
+            </div>
+          );
+        })}
+        {/*         <div className="perk default-border crazy-box-shadow">perk1</div>
+        <div className="perk default-border crazy-box-shadow">perk2</div>
+        <div className="perk default-border crazy-box-shadow">perk3</div> */}
+      </div>
     </div>
   );
 }

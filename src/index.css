@@ -15,7 +15,8 @@ body {
   --primary-color: #8BC34A;
   --secondary-color: #FF4081;
   --accent-color: #03A9F4;
-}
+  --accent-color-2: rgba(81, 200, 255, 0.3);
+  --accent-color-3: #03a8f457;}
 
 .crazy-box-shadow{
   box-shadow: 2px 4px 4px black

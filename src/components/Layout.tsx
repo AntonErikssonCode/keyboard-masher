@@ -9,6 +9,8 @@ interface LayoutProps {
   handleMashClick: () => void;
   playerInfo: any;
   handleSetPlayerInfo: (info: any) => void;
+  upgradeOpen: any;
+  handleSetUpgradeOpen: (index: number, open: boolean) => void;
 }
 
 function Layout(props: LayoutProps) {
@@ -22,6 +24,9 @@ function Layout(props: LayoutProps) {
               upgrade={upgrade}
               playerInfo={props.playerInfo}
               handleSetPlayerInfo={props.handleSetPlayerInfo}
+              upgradeOpen={props.upgradeOpen}
+              handleSetUpgradeOpen={props.handleSetUpgradeOpen}
+              index={index}
             />
           );
         })}
