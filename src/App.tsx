@@ -19,7 +19,6 @@ function App() {
       { name: "Java", number: 0, perks: 0, bought: false },
     ],
   };
-
   const [playerInfoLoaded, setPlayerInfoLoaded] = useState(false);
   const [playerInfo, setPlayerInfo] = useState(defaultPlayer);
 
@@ -36,13 +35,13 @@ function App() {
       // Cookie doesn't exist, so set it with the initial playerInfo object
       Cookies.set("playerInfo", JSON.stringify(defaultPlayer), {
         expires: expirationTimeInDays,
-      }); // Set expiration to 1 day
+      });
       setPlayerInfoLoaded(true);
       console.dir("No Cookie");
     }
   }, []);
 
-  // INCREMENT TOTAL MASHES AND UPDATE COOKIE
+  // INCREMENT totalMashes AND currentMashes
   const handleMashClick = () => {
     setPlayerInfo((prevPlayerInfo) => ({
       ...prevPlayerInfo,
@@ -51,8 +50,7 @@ function App() {
     }));
   };
 
-  // SAVE PLAYER INFO TO COOKIE WHEN IT CHANGES
-
+  // SAVE playerInfo cookie TO COOKIE WHEN IT CHANGES
   useEffect(() => {
     if (playerInfoLoaded) {
       const jsonString = JSON.stringify(playerInfo);
@@ -61,7 +59,7 @@ function App() {
     }
   }, [playerInfoLoaded, playerInfo]);
 
-  // Update mashPerSec when upgradesOwned changes
+  // UPDATE mashPerSec WHEN  upgradesOwned CHANGES
   useEffect(() => {
     if (playerInfoLoaded) {
       const updatedPlayerInfo = {
@@ -72,7 +70,7 @@ function App() {
     }
   }, [playerInfo.upgradesOwned]);
 
-  // Increment totalMashes and currentMashes every second based on mashPerSec
+  // INCREMENT totalMashes AND currentMashes EVERY SECOND BASED ON mashPerSec
   useEffect(() => {
     if (playerInfoLoaded) {
       const interval = setInterval(() => {
@@ -87,7 +85,7 @@ function App() {
     }
   }, [playerInfo.mashPerSec]);
 
-  // RESETS COOKIE AND PLAYER STATE
+  // RESETS cookie AND playerInfo
   const resetPlayerCookie = () => {
     setPlayerInfo(defaultPlayer);
     Cookies.set("playerInfo", JSON.stringify(defaultPlayer), {

@@ -123,8 +123,8 @@ function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo }: UpgradeProps) {
         onMouseUp={handleMouseUp}
         onClick={handleBuy}
       >
-        <h3>{"Code in " + name}</h3>
-        <h4>{"Cost " +newCost}</h4>
+        <h3 className="text-color-black">{"Code in " + name}</h3>
+        <h4 className="text-color-black">{"Cost " + newCost + " Mashes"}</h4>
       </button>
     </div>
   );
