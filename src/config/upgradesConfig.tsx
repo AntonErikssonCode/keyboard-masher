@@ -12,14 +12,15 @@ const upgradesConfig = [
         cost: 10,
         description: "Create a simple blog using HTML.",
         areas: ["Content Creation", "Web Publishing"],
-        bonus: "+2 per Mash",
+        bonus:[{type: "mash", bonusText: "+2 per Mash", mash:2}]
+        
       },
       {
         name: "Webpage from the 90s",
         cost: 15,
         description: "Design a webpage with a nostalgic 90s look using HTML.",
         areas: ["Retro Web Design"],
-        bonus: "+2 per Mash",
+        bonus:[{type: "mutiply", bonusText: "Doubles HTML Effectivity", mutiplier:2}]
       },
       {
         name: "Responsive Layout",
@@ -27,7 +28,7 @@ const upgradesConfig = [
         description:
           "Make your website adapt to different screen sizes using CSS media queries.",
         areas: ["Responsive Design"],
-        bonus: "+2 per Mash",
+        bonus:[{type: "secret", bonusText: "NERD OUT!"}]
       },
     ],
   },
@@ -45,7 +46,7 @@ const upgradesConfig = [
         description:
           "Add engaging animations and transitions to elements using CSS keyframes.",
         areas: ["User Experience", "Web Design"],
-        bonus: "+2 per Mash",
+        bonus:[{type: "mash", bonusText: "+5 per Mash", mash:5}]
       },
       {
         name: "CSS Grid Layout",
@@ -53,7 +54,7 @@ const upgradesConfig = [
         description:
           "Create complex grid-based layouts with ease using CSS grid.",
         areas: ["Layout Design", "Responsive Design"],
-        bonus: "+2 per Mash",
+        bonus:[{type: "mutiply", bonusText: "Doubles CSS Effectivity", mutiplier:2}]
       },
       {
         name: "Flexbox",
@@ -61,7 +62,7 @@ const upgradesConfig = [
         description:
           "Efficiently arrange and align elements using CSS flexbox.",
         areas: ["Responsive Design", "User Interface"],
-        bonus: "+2 per Mash",
+        bonus:[{type: "secret", bonusText: "NERD OUT!"}]
       },
     ],
   },
@@ -78,7 +79,7 @@ const upgradesConfig = [
         cost: 10,
         description: "Validate user inputs in forms using JavaScript.",
         areas: ["Data Validation", "Form Handling"],
-        bonus: "+2 per Mash",
+        bonus:[{type: "mash", bonusText: "+5 per Mash", mash:5}]
       },
       {
         name: "DOM Manipulation",
@@ -86,7 +87,7 @@ const upgradesConfig = [
         description:
           "Dynamically modify and interact with website elements using JavaScript and the Document Object Model (DOM).",
         areas: ["Dynamic Web Content", "User Interaction"],
-        bonus: "+2 per Mash",
+        bonus:[{type: "mutiply", bonusText: "Doubles JavaScript Effectivity", mutiplier:2}]
       },
       {
         name: "AJAX Requests",
@@ -94,7 +95,7 @@ const upgradesConfig = [
         description:
           "Fetch and update data from the server asynchronously using JavaScript.",
         areas: ["Server Communication", "Data Retrieval"],
-        bonus: "+2 per Mash",
+        bonus:[{type: "secret", bonusText: "NERD OUT!"}]
       },
     ],
   },
@@ -112,7 +113,7 @@ const upgradesConfig = [
         description:
           "Perform data manipulation, exploration, and analysis using Python libraries like Pandas and NumPy.",
         areas: ["Data Science", "Data Visualization"],
-        bonus: "+2 per Mash",
+        bonus:[{type: "mash", bonusText: "+5 per Mash", mash:5}]
       },
       {
         name: "Web Scraping",
@@ -120,7 +121,7 @@ const upgradesConfig = [
         description:
           "Extract data from websites programmatically using Python libraries like BeautifulSoup.",
         areas: ["Data Extraction", "Web Data Mining"],
-        bonus: "+2 per Mash",
+        bonus:[{type: "mutiply", bonusText: "Doubles Python Effectivity", mutiplier:2}]
       },
       {
         name: "Machine Learning",
@@ -128,7 +129,7 @@ const upgradesConfig = [
         description:
           "Build and train machine learning models using libraries like scikit-learn and TensorFlow.",
         areas: ["Artificial Intelligence", "Predictive Modeling"],
-        bonus: "+2 per Mash",
+        bonus:[{type: "secret", bonusText: "NERD OUT!"}]
       },
     ],
   },
@@ -146,7 +147,7 @@ const upgradesConfig = [
         description:
           "Learn the principles of object-oriented programming using Java.",
         areas: ["Software Design", "Modularity"],
-        bonus: "+2 per Mash",
+        bonus:[{type: "mash", bonusText: "+5 per Mash", mash:5}]
       },
       {
         name: "Database Integration",
@@ -154,7 +155,7 @@ const upgradesConfig = [
         description:
           "Connect and interact with databases using Java database connectivity (JDBC).",
         areas: ["Data Persistence", "Database Management"],
-        bonus: "+2 per Mash",
+        bonus:[{type: "mutiply", bonusText: "Doubles Java Effectivity", mutiplier:2}]
       },
       {
         name: "Web Services",
@@ -162,7 +163,7 @@ const upgradesConfig = [
         description:
           "Build and consume web services using Java frameworks like Spring and JAX-RS.",
         areas: ["API Development", "Integration"],
-        bonus: "+2 per Mash",
+        bonus:[{type: "secret", bonusText: "NERD OUT!"}]
       },
       // ... add more objects here
     ],

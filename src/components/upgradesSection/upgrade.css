@@ -16,6 +16,9 @@
   z-index: 3;
  
 }
+.upgrade-title{
+  font-size: 1.6rem;
+}
 
 .upgrades-container-1 {
   display: flex;

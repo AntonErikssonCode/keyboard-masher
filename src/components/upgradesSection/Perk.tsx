@@ -15,7 +15,7 @@ function Perk({
   perk,
   index,
   upgradeName,
-  animate
+  animate,
 }: Perk) {
   const [isPressed, setIsPressed] = useState(false);
   const [isBought, setIsBought] = useState(isPerkBought());
@@ -75,10 +75,17 @@ function Perk({
   }
 
   return (
-    <div className={`perk default-border crazy-box-shadow ${animate?"perks-animate":""} ${"perk"+index}`}>
+    <div
+      className={`perk default-border crazy-box-shadow ${
+        animate ? "perks-animate" : ""
+      } ${"perk" + index}`}
+    >
       <div className="perk-info">
         <h4>{perk.name}</h4>
-        <h5>{perk.bonus}</h5>
+        {perk.bonus.map((bonus:any) => {
+
+          return <h5>{bonus.bonusText}</h5>;
+        })}
       </div>
 
       {!isBought ? (

@@ -11,8 +11,9 @@
   transition: tra;
   background-color: var(--background-color2);
   color: white;
-  padding: 0.2rem 0.5rem;
+  padding: 0.5rem 0.5rem;
   justify-content: space-between;
+  align-items: center;
 
   transform: translateX(-110%);
 }
@@ -37,13 +38,15 @@
   border: none;
   background-color: var(--accent-color);
   color: var(--text-color);
-  padding: 1rem;
+  padding: 0.2rem 0.5rem ;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   transition: transform 0.1s ease;
+  height: 36px;
+  max-height: 40px;
 }
 
 .cant-afford-upgrade {
