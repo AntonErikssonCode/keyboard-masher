@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./upgrade.css";
 import balanceConfig from "../../config/balanceConfig";
-
+import Perk from "./Perk";
+import showTwoDecimals from "../../utlity/utilityFunctions";
 interface UpgradeProps {
   upgrade: any;
   playerInfo: any;
@@ -11,19 +12,18 @@ interface UpgradeProps {
   index: number;
 }
 function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo }: UpgradeProps) {
-  const { name, description, perks, difficulty } = upgrade;
+  const { name, description, perks, difficulty, mashPerSec } = upgrade;
   const [isPressed, setIsPressed] = useState(false);
+  const [mps, setMps] = useState(0);
   const [newCost, setNewCost] = useState(getCost(playerInfo, upgrade));
   const [bought, setBought] = useState(getBought(playerInfo, upgrade));
   const [open, setOpen] = useState(false);
 
   function handleOpen() {
-    setOpen(true);
+    setOpen(!open);
   }
 
-  function handleClose() {
-    setOpen(false);
-  }
+
 
   function handleMouseDown() {
     setIsPressed(true);
@@ -41,7 +41,14 @@ function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo }: UpgradeProps) {
     setGetNumberOfOwnedPerks(getNumberOfOwnedPerks(playerInfo, upgrade));
     setNewCost(getCost(playerInfo, upgrade));
     setBought(getBought(playerInfo, upgrade));
+    setMps(showTwoDecimals(getMPS(mashPerSec, bought)));
   }, [playerInfo]);
+
+
+  function getMPS(mashPerSec:number, bought:number){
+    return  mashPerSec * bought;
+  }
+
 
   function getNumberOfOwnedPerks(playerInfo: any, upgrade: any) {
     const upgradeName = upgrade.name;
@@ -54,6 +61,21 @@ function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo }: UpgradeProps) {
     });
     return num;
   }
+
+  function isPerkOwned(playerInfo: any, upgrade: any, perkIndex: number) {
+    const upgradeName = upgrade.name;
+    const upgradesOwnedArray = playerInfo.upgradesOwned;
+    let perkOwned = false;
+    upgradesOwnedArray.forEach((element: any) => {
+      if (element.name === upgradeName) {
+        perkOwned = element.perksOwned[perkIndex].owned;
+      }
+    });
+    return perkOwned;
+  }
+
+  const yes = isPerkOwned(playerInfo, upgrade, 0);
+
   function getBought(playerInfo: any, upgrade: any) {
     const upgradeName = upgrade.name;
     const upgradesOwnedArray = playerInfo.upgradesOwned;
@@ -107,29 +129,37 @@ function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo }: UpgradeProps) {
   }
 
   return (
-    <div className="upgradesSection">
-      <div className="upgrades-container crazy-box-shadow default-border">
+    <div className="upgradesSection" >
+      <div className="upgrades-container crazy-box-shadow default-border" onClick={handleOpen}>
         <div className="upgrades-container-1">
           <div className="upgrades-container-2">
             {bought ? (
-              <h3>{name + " (" + bought + "Days)"}</h3>
+              <h3 >{name + "  (" + bought + " Days)"}</h3>
             ) : (
-              <h3>{name}</h3>
+              <h3>{name +"  "}</h3>
             )}
 
-            <h4>{description}</h4>
+            <h4 className="upgrades-description">{description}</h4>
+            {bought ? (
+               <h4 className="upgrades-mashesPerSec">{"+ "+mps + " Mashes/s"}</h4>
+            ) : (
+             null
+            )}
+          
           </div>
           <div className="upgrades-container-3">
             {perks.map((perk: any, index: number) => {
-              let active = false;
+              /*  let active = false;
               if (index + 1 <= numberOfPerks) {
                 active = true;
-              }
+              } */
               return (
                 <div
                   key={name + index}
                   className={`upgrade-bought ${
-                    active ? "upgrade-bought-true" : ""
+                    isPerkOwned(playerInfo, upgrade, index)
+                      ? "upgrade-bought-true"
+                      : ""
                   } `}
                 ></div>
               );
@@ -138,34 +168,37 @@ function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo }: UpgradeProps) {
         </div>
         <button
           className={`button-code crazy-box-shadow default-border ${
-            playerInfo.currentMashes >= newCost ? "button-code-glow" : "cant-afford-upgrade"
-          }  ${
-            isPressed ? "pressed" : ""
-          }  `}
+            playerInfo.currentMashes >= newCost
+              ? "button-code-glow"
+              : "cant-afford-upgrade"
+          }  ${isPressed ? "pressed" : ""}  `}
           onMouseDown={handleMouseDown}
           onMouseUp={handleMouseUp}
-          onClick={handleBuy}
+          onClick={(event) => {
+            event.stopPropagation(); // Prevent event propagation
+            handleBuy();
+          }}
         >
-          <h3 className="text-color-black">{"Code in " + name}</h3>
-          <h4 className="text-color-black">{"Cost " + newCost + " Mashes"}</h4>
+          <h3 className="">{"Code in " + name}</h3>
+          <h4 className="">{"Cost " + newCost + " Mashes"}</h4>
+          <h4 className="">{ "+ " +mashPerSec+ " Mashes/s"}</h4>
         </button>
       </div>
       <div className="perks-container">
         {perks.map((perk: any, index: number) => {
-          console.dir(perk);
-          return (
-            <div
-              key={perk.name + index}
-              className="perk default-border crazy-box-shadow"
-            >
-
-              
-            </div>
-          );
+          if (open) {
+            return (
+              <Perk
+                handleSetPlayerInfo={handleSetPlayerInfo}
+                key={perk.name + index}
+                perk={perk}
+                playerInfo={playerInfo}
+                index={index}
+                upgradeName={name}
+              />
+            );
+          }
         })}
-        {/*         <div className="perk default-border crazy-box-shadow">perk1</div>
-        <div className="perk default-border crazy-box-shadow">perk2</div>
-        <div className="perk default-border crazy-box-shadow">perk3</div> */}
       </div>
     </div>
   );

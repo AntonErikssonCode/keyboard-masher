@@ -7,7 +7,7 @@
 }
 .container-upgrades {
   background-color: var(--background-color);
-  flex-basis: calc(33.33% - 2rem); /* Adjust the padding value as needed */
+  flex-basis: calc(35% - 2rem); /* Adjust the padding value as needed */
   flex-grow: 0;
   flex-shrink: 0;
   display: flex;
@@ -39,7 +39,7 @@
 
 .container-mash{
   background-color: var(--background-color);
-  flex-basis: 33.33%;
+  flex-basis: 30%;
   flex-grow: 0;
   flex-shrink: 0;
   display: flex;
@@ -50,7 +50,7 @@
 }
 .container-stats{
   background-color: var(--background-color);
-  flex-basis: calc(33.33% - 2rem); /* Adjust the padding value as needed */
+  flex-basis: calc(35% - 2rem); /* Adjust the padding value as needed */
   flex-grow: 0;
   flex-shrink: 0;
   display: flex;

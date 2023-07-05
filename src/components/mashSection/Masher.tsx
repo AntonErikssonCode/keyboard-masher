@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Masher.css";
-
+import showTwoDecimals from "../../utlity/utilityFunctions";
 interface MasherProps {
   handleMashClick: () => void;
   currentMashes: number;
@@ -30,8 +30,8 @@ function Masher(props: MasherProps) {
       onMouseUp={handleMouseUp}
       onClick={handleMash}
     >
-      <div className="currentMashes crazy-box-shadow default-border">{Math.ceil(props.currentMashes)+ " Mashes"}</div>
-      <div className="mashPerSec crazy-box-shadow default-border">{props.mashPerSec + " Mashes/s"}</div>
+      <div className="currentMashes crazy-box-shadow default-border">{showTwoDecimals(props.currentMashes)+ " Mashes"}</div>
+      <div className="mashPerSec crazy-box-shadow default-border">{showTwoDecimals(props.mashPerSec) + " Mashes/s"}</div>
 
       <div className={`laptop-container ${isPressed ? "pressed" : ""}`} >
         <img src={laptop} className="laptop-img " alt="laptop" />

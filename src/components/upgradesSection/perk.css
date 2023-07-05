@@ -1,0 +1,39 @@
+.perk-button:hover {
+  transform: scale(1.02);
+}
+.perk-button.pressed {
+  transform: scale(0.95);
+}
+
+.perk {
+  flex-basis: 33.33%;
+  display: flex;
+  transition: tra;
+  background-color: var(--background-color2);
+  color: white;
+  padding: 0.2rem 0.5rem;
+  justify-content: space-between;
+}
+
+.perk-info{
+  display: flex;
+  flex-direction: column;
+
+}
+.perk-button{
+  border: none;
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  padding: 1rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.1s ease;
+
+}
+
+.cant-afford-upgrade{
+  background-color: var(--accent-color-3);
+}

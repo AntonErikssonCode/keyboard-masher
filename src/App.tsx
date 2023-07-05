@@ -8,22 +8,53 @@ function App() {
   // CONFIG CONSTS
   const expirationTimeInDays = 1;
   const defaultPlayer = {
-    currentMashes: 0,
+    currentMashes: 10000,
     totalMashes: 0,
     mashPerSec: 0,
+    mashBonus: 1,
     upgradesOwned: [
-      { name: "HTML", number: 0, perks: 0, bought: true },
-      { name: "CSS", number: 0, perks: 0, bought: true },
-      { name: "JavaScript", number: 0, perks: 0, bought: false },
-      { name: "Python", number: 0, perks: 0, bought: false },
-      { name: "Java", number: 0, perks: 0, bought: false },
+      {
+        name: "HTML",
+        number: 0,
+        perks: 0,
+        bought: true,
+        perksOwned: [{ owned: false }, { owned: false }, { owned: false }],
+      },
+      {
+        name: "CSS",
+        number: 0,
+        perks: 0,
+        bought: true,
+        perksOwned: [{ owned: false }, { owned: false }, { owned: false }],
+      },
+      {
+        name: "JavaScript",
+        number: 0,
+        perks: 0,
+        bought: false,
+        perksOwned: [{ owned: false }, { owned: false }, { owned: false }],
+      },
+      {
+        name: "Python",
+        number: 0,
+        perks: 0,
+        bought: false,
+        perksOwned: [{ owned: false }, { owned: false }, { owned: false }],
+      },
+      {
+        name: "Java",
+        number: 0,
+        perks: 0,
+        bought: false,
+        perksOwned: [{ owned: false }, { owned: false }, { owned: false }],
+      },
     ],
   };
 
-  // STATES 
+  // STATES
   const [playerInfoLoaded, setPlayerInfoLoaded] = useState(false);
   const [playerInfo, setPlayerInfo] = useState(defaultPlayer);
-  const [upgradeOpen, setUpgradeOpen] = useState({index: 0, open: false});
+  const [upgradeOpen, setUpgradeOpen] = useState({ index: 0, open: false });
 
   // USEEFFECT
   // LOAD INITIAL GAME DATA
@@ -110,12 +141,12 @@ function App() {
   const handleMashClick = () => {
     setPlayerInfo((prevPlayerInfo) => ({
       ...prevPlayerInfo,
-      totalMashes: prevPlayerInfo.totalMashes + 1,
-      currentMashes: prevPlayerInfo.currentMashes + 1,
+      totalMashes: prevPlayerInfo.totalMashes + playerInfo.mashBonus,
+      currentMashes: prevPlayerInfo.currentMashes + playerInfo.mashBonus,
     }));
   };
   const handleSetUpgradeOpen = (index: number, open: boolean) => {
-    setUpgradeOpen({index: index,  open: open})
+    setUpgradeOpen({ index: index, open: open });
   };
   // RETURN APP
   return (
@@ -128,7 +159,6 @@ function App() {
             handleSetPlayerInfo={setPlayerInfo}
             upgradeOpen={upgradeOpen}
             handleSetUpgradeOpen={handleSetUpgradeOpen}
-            
           />
           <button onClick={resetPlayerCookie}>Reset Player</button>
         </>
