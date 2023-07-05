@@ -7,6 +7,7 @@ interface Perk {
   index: number;
   upgradeName: string;
   handleSetPlayerInfo: (info: any) => void;
+  animate: boolean;
 }
 function Perk({
   handleSetPlayerInfo,
@@ -14,6 +15,7 @@ function Perk({
   perk,
   index,
   upgradeName,
+  animate
 }: Perk) {
   const [isPressed, setIsPressed] = useState(false);
   const [isBought, setIsBought] = useState(isPerkBought());
@@ -73,7 +75,7 @@ function Perk({
   }
 
   return (
-    <div className="perk default-border crazy-box-shadow">
+    <div className={`perk default-border crazy-box-shadow ${animate?"perks-animate":""} ${"perk"+index}`}>
       <div className="perk-info">
         <h4>{perk.name}</h4>
         <h5>{perk.bonus}</h5>

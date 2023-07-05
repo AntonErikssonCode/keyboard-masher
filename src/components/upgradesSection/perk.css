@@ -13,14 +13,27 @@
   color: white;
   padding: 0.2rem 0.5rem;
   justify-content: space-between;
+
+  transform: translateX(-110%);
+}
+.perk0 {
+  transition: all 0.2s ease-out 0s;
+}
+.perk1 {
+  transition: all 0.2s ease-out 0.1s;
+}
+.perk2 {
+  transition: all 0.2s ease-out 0.2s;
 }
 
-.perk-info{
+.perks-animate {
+  transform: translateX(0);
+}
+.perk-info {
   display: flex;
   flex-direction: column;
-
 }
-.perk-button{
+.perk-button {
   border: none;
   background-color: var(--accent-color);
   color: var(--text-color);
@@ -31,9 +44,8 @@
   justify-content: center;
   align-items: center;
   transition: transform 0.1s ease;
-
 }
 
-.cant-afford-upgrade{
+.cant-afford-upgrade {
   background-color: var(--accent-color-3);
 }

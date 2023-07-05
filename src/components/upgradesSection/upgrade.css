@@ -13,6 +13,7 @@
   gap: 1rem;
   cursor: pointer;
   justify-content: space-between;
+  z-index: 3;
  
 }
 
@@ -101,23 +102,10 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 0.5rem;
-  animation: slideIn 1s ease-out 0s ;
   position: relative;
-   /* Initial position outside the screen */
-  transition: all 0.5s ease-out;
+
 }
-/* 
-@keyframes slideIn {
-  from {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0); 
-    opacity: 1;
-  }
-}
- */
+
 .upgrades-mashesPerSec{
   font-weight: 400;
 }

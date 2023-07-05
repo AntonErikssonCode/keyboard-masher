@@ -391,7 +391,7 @@ function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo }: UpgradeProps) {
       </div>
       <div className="perks-container">
         {perks.map((perk: any, index: number) => {
-          if (open) {
+         
             return (
               <Perk
                 handleSetPlayerInfo={handleSetPlayerInfo}
@@ -400,9 +400,10 @@ function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo }: UpgradeProps) {
                 playerInfo={playerInfo}
                 index={index}
                 upgradeName={name}
+                animate={open}
               />
             );
-          }
+          
         })}
       </div>
     </div>
