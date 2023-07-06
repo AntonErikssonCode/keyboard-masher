@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import "./upgrade.css";
 import balanceConfig from "../../config/balanceConfig";
 import Perk from "./Perk";
-import showTwoDecimals from "../../utlity/utilityFunctions";
+import {shortenNumber} from "../../utlity/utilityFunctions";
 interface UpgradeProps {
   upgrade: any;
   playerInfo: any;
@@ -14,7 +14,7 @@ interface UpgradeProps {
 function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo }: UpgradeProps) {
   const { name, description, perks, difficulty, mashPerSec } = upgrade;
   const [isPressed, setIsPressed] = useState(false);
-  const [mps, setMps] = useState(0);
+  const [mps, setMps] = useState<any>(0);
   const [newCost, setNewCost] = useState(upgrade.cost); //getCost(playerInfo, upgrade)
   const [bought, setBought] = useState(getBought(playerInfo, upgrade));
   const [open, setOpen] = useState(false);
@@ -39,7 +39,7 @@ function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo }: UpgradeProps) {
     setGetNumberOfOwnedPerks(getNumberOfOwnedPerks(playerInfo, upgrade));
 
     setBought(getBought(playerInfo, upgrade));
-    setMps(showTwoDecimals(getMPS(mashPerSec, bought)));
+    setMps(shortenNumber(getMPS(mashPerSec, bought)));
   }, [playerInfo]);
 
   function getMPS(mashPerSec: number, bought: number) {
@@ -178,7 +178,7 @@ function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo }: UpgradeProps) {
           }}
         >
           <h3 className="">{"Code in " + name}</h3>
-          <h4 className="">{"Cost " + newCost + " Mashes"}</h4>
+          <h4 className="">{"Cost " + shortenNumber(newCost) + " Mashes"}</h4>
           <h4 className="">{"+ " + mashPerSec + " Mashes/s"}</h4>
         </button>
       </div>

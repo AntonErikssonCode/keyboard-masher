@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Masher.css";
-import showTwoDecimals from "../../utlity/utilityFunctions";
+import { shortenNumber } from "../../utlity/utilityFunctions";
 
 interface SpawnedObject {
   id: number;
@@ -55,10 +55,10 @@ function Masher(props: MasherProps) {
       ))} */}
 
       <div className="currentMashes crazy-box-shadow default-border">
-        {showTwoDecimals(props.currentMashes) + " Mashes"}
+        {shortenNumber(props.currentMashes) + " Mashes"}
       </div>
       <div className="mashPerSec crazy-box-shadow default-border">
-        {showTwoDecimals(props.mashPerSec) + " Mashes/s"}
+        {shortenNumber(props.mashPerSec) + " Mashes/s"}
       </div>
 
       <div className={`laptop-container ${isPressed ? "pressed" : ""}`}>

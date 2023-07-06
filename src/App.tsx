@@ -124,11 +124,13 @@ function App() {
 
   // SAVE playerInfo cookie TO COOKIE WHEN IT CHANGES
   useEffect(() => {
+    
     if (playerInfoLoaded) {
       const jsonString = JSON.stringify(playerInfo);
       Cookies.set("playerInfo", jsonString, { expires: expirationTimeInDays });
       console.dir("Set Cookie");
     }
+   
   }, [playerInfoLoaded, playerInfo]);
 
   // UPDATE mashPerSec WHEN  upgradesOwned CHANGES
@@ -154,6 +156,7 @@ function App() {
           totalMashes: prevPlayerInfo.totalMashes + (playerInfo.mashPerSec/updateTime),
           currentMashes: prevPlayerInfo.currentMashes + (playerInfo.mashPerSec/updateTime),
         }));
+        document.title = "KeyMasher " + playerInfo.currentMashes;
       }, 1000/updateTime);
 
       return () => clearInterval(interval);
