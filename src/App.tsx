@@ -5,6 +5,14 @@ import Layout from "./components/Layout";
 import upgradesConfig from "./config/upgradesConfig";
 import balanceConfig from "./config/balanceConfig";
 import CircleCanvas from "./components/CircleAnimation";
+import { getRandomInt, getRandomIntNotFloor } from "./utlity/utilityFunctions";
+interface Circle {
+  x: number;
+  y: number;
+  speedX: number;
+  speedY: number;
+  radius: number;
+}
 function App() {
   // CONFIG CONSTS
   const expirationTimeInDays = 1;
@@ -101,7 +109,7 @@ function App() {
   const [playerInfoLoaded, setPlayerInfoLoaded] = useState(false);
   const [playerInfo, setPlayerInfo] = useState(defaultPlayer);
   const [upgradeOpen, setUpgradeOpen] = useState({ index: 0, open: false });
-  
+
   // USEEFFECT
   // LOAD INITIAL GAME DATA
   useEffect(() => {
@@ -124,13 +132,11 @@ function App() {
 
   // SAVE playerInfo cookie TO COOKIE WHEN IT CHANGES
   useEffect(() => {
-    
     if (playerInfoLoaded) {
       const jsonString = JSON.stringify(playerInfo);
       Cookies.set("playerInfo", jsonString, { expires: expirationTimeInDays });
       console.dir("Set Cookie");
     }
-   
   }, [playerInfoLoaded, playerInfo]);
 
   // UPDATE mashPerSec WHEN  upgradesOwned CHANGES
@@ -141,23 +147,23 @@ function App() {
         mashPerSec: calculateMashPerSec(),
       };
       setPlayerInfo(updatedPlayerInfo);
-      
     }
   }, [playerInfo.upgradesOwned]);
 
   // INCREMENT totalMashes AND currentMashes EVERY SECOND BASED ON mashPerSec
   const updateTime = balanceConfig.timeUpdateModfier;
   useEffect(() => {
-    
     if (playerInfoLoaded) {
       const interval = setInterval(() => {
         setPlayerInfo((prevPlayerInfo) => ({
           ...prevPlayerInfo,
-          totalMashes: prevPlayerInfo.totalMashes + (playerInfo.mashPerSec/updateTime),
-          currentMashes: prevPlayerInfo.currentMashes + (playerInfo.mashPerSec/updateTime),
+          totalMashes:
+            prevPlayerInfo.totalMashes + playerInfo.mashPerSec / updateTime,
+          currentMashes:
+            prevPlayerInfo.currentMashes + playerInfo.mashPerSec / updateTime,
         }));
         document.title = "KeyMasher " + playerInfo.currentMashes;
-      }, 1000/updateTime);
+      }, 1000 / updateTime);
 
       return () => clearInterval(interval);
     }
@@ -183,9 +189,8 @@ function App() {
       );
       if (upgradeData) {
         const upgradeModifer = upgrade.mutiplier * upgrade.number;
-  
-        mashPerSec +=
-          upgradeData.mashPerSec * upgradeModifer ;
+
+        mashPerSec += upgradeData.mashPerSec * upgradeModifer;
       }
     });
     return mashPerSec;
@@ -204,9 +209,8 @@ function App() {
     setUpgradeOpen({ index: index, open: open });
   };
 
-  
   // Canvas Ref
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  /* const canvasRef = useRef<HTMLCanvasElement>(null);
   const handleCanvasDraw = () => {
     const canvas = canvasRef.current;
     const context = canvas?.getContext("2d");
@@ -277,41 +281,161 @@ function App() {
     // Generate and animate circles
     generateCircles(15);
     animate();
+  }; */
+
+  /* 
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const circlesRef = useRef<Circle[]>([]);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const context = canvas!.getContext('2d')!;
+
+    let animationFrameId: number;
+
+    const animate = () => {
+      animationFrameId = requestAnimationFrame(animate);
+      if(canvas)
+      context.clearRect(0, 0, canvas.width, canvas.height);
+
+      circlesRef.current.forEach(circle => {
+        circle.x += circle.speed;
+        context.beginPath();
+        context.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
+        context.fillStyle = '#03A9F4';
+        context.fill();
+      });
+    };
+
+    animate();
+
+    return () => cancelAnimationFrame(animationFrameId);
+  }, []);
+
+  const addCirclesToCanvas = () => {
+    const canvas = canvasRef.current;
+    const context = canvas!.getContext('2d')!;
+
+    const circle: Circle = {
+      x: canvas!.width / 2,
+      y: canvas!.height / 2,
+      speed: 1,
+      radius: 10,
+    };
+
+    circlesRef.current.push(circle);
+
+    context.beginPath();
+    context.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
+    context.fillStyle = '#FF0000';
+    context.fill();
   };
   
-  
-  
+   */
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const circlesRef = useRef<Circle[]>([]);
 
-useEffect(()=>{
-  handleCanvasDraw();
-},[playerInfo.upgradesOwned])
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const context = canvas!.getContext("2d")!;
+
+    let animationFrameId: number;
+
+    const animate = () => {
+      animationFrameId = requestAnimationFrame(animate);
+      if (canvas) context.clearRect(0, 0, canvas.width, canvas.height);
+
+      circlesRef.current.forEach((circle) => {
+        circle.x += circle.speedX;
+        circle.y += circle.speedY;
+        if (canvas)
+          if (
+            circle.x + circle.radius < 0 ||
+            circle.x - circle.radius > canvas.width ||
+            circle.y + circle.radius < 0 ||
+            circle.y - circle.radius > canvas.height
+          ) {
+            // Remove circle if it goes off-screen
+            circlesRef.current = circlesRef.current.filter((c) => c !== circle);
+          } else {
+            context.beginPath();
+            context.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
+            context.fillStyle = "#03A9F466";
+            context.fill();
+          }
+      });
+    };
+
+    animate();
+
+    return () => cancelAnimationFrame(animationFrameId);
+  }, []);
+
+  const addCirclesToCanvas = () => {
+    const canvas = canvasRef.current;
+    const context = canvas!.getContext("2d")!;
+
+    const numCircles = getRandomInt(5, 15); // Random number between 10 and 20
+
+    for (let i = 0; i < numCircles; i++) {
+      const circle: Circle = {
+        x: canvas!.width / 2,
+        y: canvas!.height / 2,
+        speedX: getRandomSpeed(),
+        speedY: getRandomSpeed(),
+        radius: getRandomRadius(),
+      };
+
+      circlesRef.current.push(circle);
+
+      context.beginPath();
+      context.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
+      context.fillStyle = "#FF0000";
+      context.fill();
+    }
+  };
+
+  const getRandomSpeed = () => {
+    let randomNum = getRandomIntNotFloor(-1, 1) * 3;
+   
+    return randomNum;
+
+  };
+
+  const getRandomRadius = () => {
+    return getRandomIntNotFloor(5, 15);
+  };
+
+  useEffect(() => {
+    addCirclesToCanvas();
+  }, [playerInfo.upgradesOwned]);
 
   // RETURN APP
   return (
     <div className="App">
-    <canvas
-      ref={canvasRef}
-      width={window.innerWidth}
-      height={window.innerHeight}
-      className="CanvasBackground"
-    />
-    <div className="ContentWrapper">
-      {playerInfoLoaded ? (
-        <>
-          <Layout
-            handleMashClick={handleMashClick}
-            playerInfo={playerInfo}
-            handleSetPlayerInfo={setPlayerInfo}
-            upgradeOpen={upgradeOpen}
-            handleSetUpgradeOpen={handleSetUpgradeOpen}
-          />
-          <button onClick={resetPlayerCookie}>Reset Player</button>
-        </>
-      ) : (
-        <div>Loading...</div>
-      )}
+      <canvas
+        ref={canvasRef}
+        width={window.innerWidth}
+        height={window.innerHeight}
+        className="CanvasBackground"
+      />
+      <div className="ContentWrapper">
+        {playerInfoLoaded ? (
+          <>
+            <Layout
+              handleMashClick={handleMashClick}
+              playerInfo={playerInfo}
+              handleSetPlayerInfo={setPlayerInfo}
+              upgradeOpen={upgradeOpen}
+              handleSetUpgradeOpen={handleSetUpgradeOpen}
+            />
+            <button onClick={resetPlayerCookie}>Reset Player</button>
+          </>
+        ) : (
+          <div>Loading...</div>
+        )}
+      </div>
     </div>
-  </div>
   );
 }
 
