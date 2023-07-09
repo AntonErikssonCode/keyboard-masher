@@ -186,7 +186,7 @@ const upgradesConfig = [
     name: "Ruby",
     difficulty: "Beginner",
     description: "Elegant and readable programming language",
-    cost: 1000000000,
+    cost: 10000000,
     mashPerSec: 15000,
     areas: ["Web Development", "Scripting"],
     perks: [
@@ -226,7 +226,7 @@ const upgradesConfig = [
     name: "C++",
     difficulty: "Intermediate",
     description: "High-performance systems programming language",
-    cost: 15000000000,
+    cost: 150000000,
     mashPerSec: 10000,
     areas: ["System Programming", "Game Development"],
     perks: [
@@ -266,7 +266,7 @@ const upgradesConfig = [
     name: "Swift",
     difficulty: "Intermediate",
     description: "Modern and safe programming language for iOS and macOS",
-    cost: 100000000000,
+    cost: 100000000,
     mashPerSec: 1000000,
     areas: ["Mobile App Development", "iOS Development"],
     perks: [
@@ -306,7 +306,7 @@ const upgradesConfig = [
     name: "Go",
     difficulty: "Intermediate",
     description: "Efficient and concurrent programming language",
-    cost: 2000000000000,
+    cost: 20000000000,
     mashPerSec: 10000000,
     areas: ["Backend Development", "Network Applications"],
     perks: [
@@ -346,7 +346,7 @@ const upgradesConfig = [
     name: "Rust",
     difficulty: "Advanced",
     description: "Safe and concurrent systems programming language",
-    cost: 10000000000000,
+    cost: 100000000000,
     mashPerSec: 156165,
     areas: ["System Programming", "Embedded Systems"],
     perks: [
