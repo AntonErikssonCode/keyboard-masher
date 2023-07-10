@@ -524,7 +524,7 @@ const upgradesConfig = [
     difficulty: "Beginner",
     description: "Style Website Elements",
     cost: 1000,
-    mashPerSec: 5,
+    mashPerSec: 20,
     areas: ["Web Development", "Front-end Development"],
     perks: [
       {
@@ -572,7 +572,7 @@ const upgradesConfig = [
     difficulty: "Beginner",
     description: "Make Websites Interactive",
     cost: 100000,
-    mashPerSec: 100,
+    mashPerSec: 200,
     areas: ["Web Development", "Front-end Development"],
     perks: [
       {
@@ -620,7 +620,7 @@ const upgradesConfig = [
     difficulty: "Beginner",
     description: "General-purpose Programming",
     cost: 1000000,
-    mashPerSec: 1500,
+    mashPerSec: 2000,
     areas: ["Software Development", "Data Analysis"],
     perks: [
       {
@@ -668,7 +668,7 @@ const upgradesConfig = [
     difficulty: "Beginner",
     description: "Building castles in code!",
     cost: 1000000000,
-    mashPerSec: 5500,
+    mashPerSec: 20000,
     areas: ["Software Development", "Back-end Development"],
     perks: [
       {
@@ -716,7 +716,7 @@ const upgradesConfig = [
     difficulty: "Beginner",
     description: "The elegant art of code poetry.",
     cost: 10000000000,
-    mashPerSec: 15000,
+    mashPerSec: 200000,
     areas: ["Web Development", "Scripting"],
     perks: [
       {
@@ -764,7 +764,7 @@ const upgradesConfig = [
     difficulty: "Intermediate",
     description: "High-performance systems programming language",
     cost: 100000000000,
-    mashPerSec: 10000,
+    mashPerSec: 2000000,
     areas: ["System Programming", "Game Development"],
     perks: [
       {
@@ -812,7 +812,7 @@ const upgradesConfig = [
     difficulty: "Intermediate",
     description: "Modern and safe programming language for iOS and macOS",
     cost: 1000000000000,
-    mashPerSec: 1000000,
+    mashPerSec: 20000000,
     areas: ["Mobile App Development", "iOS Development"],
     perks: [
       {
@@ -860,7 +860,7 @@ const upgradesConfig = [
     difficulty: "Intermediate",
     description: "Efficient and concurrent programming language",
     cost: 10000000000000,
-    mashPerSec: 10000000,
+    mashPerSec: 200000000,
     areas: ["Backend Development", "Network Applications"],
     perks: [
       {
@@ -908,7 +908,7 @@ const upgradesConfig = [
     difficulty: "Advanced",
     description: "Safe and concurrent systems programming language",
     cost: 100000000000000,
-    mashPerSec: 156165,
+    mashPerSec: 2000000000,
     areas: ["System Programming", "Embedded Systems"],
     perks: [
       {

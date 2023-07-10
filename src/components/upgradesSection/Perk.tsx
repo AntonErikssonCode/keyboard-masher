@@ -157,34 +157,34 @@ function Perk({
                 return perkOwned;
               }
             );
-  
+
             return {
               ...upgrade,
               perksOwned: updatedPerksOwned,
             };
           }
-  
+
           return upgrade;
         }
       );
-  
+
       return {
         ...prevPlayerInfo,
         upgradesOwned: updatedUpgradesOwned,
       };
     });
-  
+
     addPerkBonus(upgradeName, index);
   }
-  
+
   function addPerkBonus(upgradeName: string, perkIndex: number) {
     const selectedUpgrade = upgradesConfig.find(
       (upgrade) => upgrade.name === upgradeName
     );
-  
+
     if (selectedUpgrade) {
       const selectedPerk = selectedUpgrade.perks[perkIndex];
-  
+
       if (selectedPerk) {
         selectedPerk.bonus.forEach((bonus) => {
           switch (bonus.type) {
@@ -213,6 +213,14 @@ function Perk({
               }));
               break;
             case "secret":
+              const allMultiplierModfier = 1;
+              handleSetPlayerInfo((prevPlayerInfo: any) => ({
+                ...prevPlayerInfo,
+
+                allMultiplier:
+                  prevPlayerInfo.allMultiplier + allMultiplierModfier,
+              }));
+
               break;
             default:
               break;
@@ -221,10 +229,10 @@ function Perk({
       }
     }
   }
-  
-  
+
   return (
-    <div title={perk.description}
+    <div
+      title={perk.description}
       className={`perk default-border crazy-box-shadow ${
         animate ? "perks-animate" : ""
       } ${"perk" + index}`}
@@ -232,7 +240,11 @@ function Perk({
       <div className="perk-info">
         <h4>{perk.name}</h4>
         {perk.bonus.map((bonus: any, index: number) => {
-          return <h5 className="perk-info-small" key={"perk-info" + index}>{bonus.bonusText}</h5>;
+          return (
+            <h5 className="perk-info-small" key={"perk-info" + index}>
+              {bonus.bonusText}
+            </h5>
+          );
         })}
       </div>
 
