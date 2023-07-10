@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./perk.css";
+import upgradesConfig from "../../config/upgradesConfig";
 
 interface Perk {
   playerInfo: any;
@@ -38,9 +39,8 @@ function Perk({
     const slectedPerk = slectedUpgrade.perksOwned[index].owned;
     return slectedPerk;
   }
- 
 
-  function addPerkBonus(perk: any) {
+  /*   function addPerkBonus(perk: any) {
     const upgradeName = perk.parent;
     perk.bonus.forEach((bonus: any, index: number) => {
       const type = bonus.type;
@@ -63,9 +63,37 @@ function Perk({
           break;
       }
     });
+  } */
+
+  function addPerkBonus(upgradeName: string, perkIndex: number) {
+    const selectedUpgrade = upgradesConfig.find(
+      (upgrade) => upgrade.name === upgradeName
+    );
+
+    if (selectedUpgrade) {
+      const selectedPerk = selectedUpgrade.perks[perkIndex];
+
+      if (selectedPerk) {
+        selectedPerk.bonus.forEach((bonus) => {
+          console.log(bonus.type);
+          switch (bonus.type) {
+            case "mash":
+
+            
+              break;
+            case "mutiply":
+              break;
+            case "secret":
+              break;
+
+            default:
+              break;
+          }
+        });
+      }
+    }
   }
-  
- 
+
   function handleBuyPerk() {
     setIsBought(true);
 
@@ -75,9 +103,8 @@ function Perk({
           if (upgrade.name === upgradeName) {
             const updatedPerksOwned = upgrade.perksOwned.map(
               (perkOwned: any, perkIndex: number) => {
-           
                 if (perkIndex === index) {
-                  
+                  addPerkBonus(upgradeName, perkIndex);
                   return { owned: true };
                 }
                 return perkOwned;
@@ -89,6 +116,7 @@ function Perk({
               perksOwned: updatedPerksOwned,
             };
           }
+
           return upgrade;
         }
       );
