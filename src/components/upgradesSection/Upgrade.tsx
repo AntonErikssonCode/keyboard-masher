@@ -11,7 +11,7 @@ interface UpgradeProps {
   handleSetUpgradeOpen: (index: number, open: boolean) => void;
   index: number;
 }
-function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo }: UpgradeProps) {
+function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo, index}: UpgradeProps) {
   const { name, description, perks, difficulty, mashPerSec } = upgrade;
   const [isPressed, setIsPressed] = useState(false);
   const [mps, setMps] = useState<any>(0);
@@ -43,8 +43,8 @@ function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo }: UpgradeProps) {
   }, [playerInfo]);
 
   function getMPS(mashPerSec: number, bought: number, playerInfo:any, upgrade:any) {
-    const mutiplier = getMutiplier(playerInfo, upgrade);
-    return mashPerSec * bought *mutiplier;
+    const multiplier = getMultiplier(playerInfo, upgrade);
+    return mashPerSec * bought * multiplier;
   }
 
   function getNumberOfOwnedPerks(playerInfo: any, upgrade: any) {
@@ -59,13 +59,13 @@ function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo }: UpgradeProps) {
     return num;
   }
 
-  function getMutiplier(playerInfo: any, upgrade: any) {
+  function getMultiplier(playerInfo: any, upgrade: any) {
     const upgradeName = upgrade.name;
     const upgradesOwnedArray = playerInfo.upgradesOwned;
     let multiplier = 0;
     upgradesOwnedArray.forEach((element: any) => {
       if (element.name === upgradeName) {
-        multiplier = element.mutiplier;
+        multiplier = element.multiplier;
       
       }
     });
@@ -103,14 +103,14 @@ function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo }: UpgradeProps) {
     const upgradeName = upgrade.name;
     const upgradesOwnedArray = playerInfo.upgradesOwned;
     const numberOfOwned = playerInfo.upgradesOwned;
-    let mutiplier = 1;
+    let multiplier = 1;
     upgradesOwnedArray.forEach((element: any) => {
       if (element.name === upgradeName) {
-        mutiplier = element.number + 1;
+        multiplier = element.number + 1;
       }
     });
 
-    const newPrice = Math.ceil(newCost * balanceConfig.upgradesMutiplier);
+    const newPrice = Math.ceil(newCost * balanceConfig.upgradesMultiplier);
 
     setNewCost(newPrice);
     return newPrice;
@@ -136,10 +136,22 @@ function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo }: UpgradeProps) {
       handleSetPlayerInfo(updatedPlayerInfo);
     }
   }
-
+  const colorVariations = [
+    '#8BC34A',
+    '#8BC34A',
+    '#FF4081',
+    '#FF4081',
+    '#03A9F4',
+    '#03A9F4',
+    '#8BC34A',
+    '#FF4081',
+    '#03A9F4',
+    '#8BC34A',
+  ];
+  
 
   return (
-    <div className="upgradesSection">
+    <div className="upgradesSection" title={description} >
       <div
         className="upgrades-container crazy-box-shadow default-border"
         onClick={handleOpen}
@@ -181,6 +193,7 @@ function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo }: UpgradeProps) {
           </div>
         </div>
         <button
+        
           className={`button-code crazy-box-shadow default-border ${
             playerInfo.currentMashes >= newCost
               ? "button-code-glow"
@@ -195,7 +208,7 @@ function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo }: UpgradeProps) {
         >
           <h3 className="">{"Code in " + name}</h3>
           <h4 className="">{"Cost " + shortenNumber(newCost) + " Mashes"}</h4>
-          <h4 className="">{"+ " + mashPerSec + " Mashes/s"}</h4>
+          <h4 className="">{"+ " + shortenNumber(mashPerSec) + " Mashes/s"}</h4>
         </button>
       </div>
       <div className="perks-container">

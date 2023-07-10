@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import "./statsCategory.css"
 interface StatsCategoryProps {
   title: string;
 

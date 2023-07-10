@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./perk.css";
 import upgradesConfig from "../../config/upgradesConfig";
+import { showTwoDecimals, shortenNumber } from "../../utlity/utilityFunctions";
 
 interface Perk {
   playerInfo: any;
@@ -203,7 +204,7 @@ function Perk({
                     if (upgrade.name === upgradeName) {
                       return {
                         ...upgrade,
-                        mutiplier: upgrade.mutiplier * multiplier,
+                        multiplier: upgrade.multiplier * multiplier,
                       };
                     }
                     return upgrade;
@@ -223,7 +224,7 @@ function Perk({
   
   
   return (
-    <div
+    <div title={perk.description}
       className={`perk default-border crazy-box-shadow ${
         animate ? "perks-animate" : ""
       } ${"perk" + index}`}
@@ -246,7 +247,7 @@ function Perk({
             playerInfo.currentMashes >= perk.cost ? "" : "cant-afford-upgrade"
           }  `}
         >
-          Build <br></br>
+          Build <br></br> {shortenNumber(perk.cost)}
         </button>
       ) : null}
     </div>

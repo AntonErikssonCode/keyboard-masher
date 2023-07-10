@@ -6,7 +6,7 @@
 }
 
 .perk {
-  flex-basis: 33.33%;
+ /*  flex-basis: 33.33%; */
   display: flex;
   transition: tra;
   background-color: var(--background-color2);
@@ -17,15 +17,8 @@
   transform: translateX(-110%);
   transition: all 0.1s ease-out 0s;
 }
-/* .perk0 {
-  transition: all 0.1s ease-out 0s;
-} */
-/* .perk1 {
-  transition: all 0.1s ease-out 0.1s;
-}
-.perk2 {
-  transition: all 0.1s ease-out 0.2s;
-} */
+
+
 
 .perks-animate.perk0 {
   transform: translateX(0);

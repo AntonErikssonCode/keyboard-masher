@@ -6,6 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   user-select: none;
+  overflow: none;
 }
 
 :root {
@@ -18,7 +19,23 @@ body {
   --accent-color: #03A9F4;
   --accent-color-2: rgba(81, 200, 255, 0.3);
   --accent-color-3: #03a8f457;}
+/* CSS for the custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
 
+::-webkit-scrollbar-track {
+  background-color: var(--background-color2);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--accent-color-3);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--background-color);
+}
 .crazy-box-shadow{
   box-shadow: 2px 4px 4px black
 }
@@ -26,7 +43,6 @@ body {
 .default-border{
   border-radius: 5px;
 }
-
 
 h1,h2,h3,h4,h5,p{
   margin:0;

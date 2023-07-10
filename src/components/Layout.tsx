@@ -17,17 +17,21 @@ function Layout(props: LayoutProps) {
     <div className="container">
       <div className="container-upgrades">
         {upgradesConfig.map((upgrade, index) => {
-          return (
-            <Upgrade
-              key={"upgrade" + index}
-              upgrade={upgrade}
-              playerInfo={props.playerInfo}
-              handleSetPlayerInfo={props.handleSetPlayerInfo}
-              upgradeOpen={props.upgradeOpen}
-              handleSetUpgradeOpen={props.handleSetUpgradeOpen}
-              index={index}
-            />
-          );
+          const totalMash = props.playerInfo.totalMashes;
+          const cost = upgrade.cost;
+          if (totalMash > cost) {
+            return (
+              <Upgrade
+                key={"upgrade" + index}
+                upgrade={upgrade}
+                playerInfo={props.playerInfo}
+                handleSetPlayerInfo={props.handleSetPlayerInfo}
+                upgradeOpen={props.upgradeOpen}
+                handleSetUpgradeOpen={props.handleSetUpgradeOpen}
+                index={index}
+              />
+            );
+          }
         })}
       </div>
       <div className="container-mash">
@@ -39,7 +43,7 @@ function Layout(props: LayoutProps) {
         />
       </div>
       <div className="container-stats">
-       <Stats playerInfo={props.playerInfo}/>
+        <Stats playerInfo={props.playerInfo} />
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ import upgradesConfig from "./config/upgradesConfig";
 import balanceConfig from "./config/balanceConfig";
 import CircleCanvas from "./components/CircleAnimation";
 import { getRandomInt, getRandomIntNotFloor } from "./utlity/utilityFunctions";
+import achievmentConfig from "./config/achievementConfig";
 interface Circle {
   x: number;
   y: number;
@@ -19,8 +20,10 @@ function App() {
   const defaultPlayer = {
     currentMashes:0,
     totalMashes: 0,
+    totalClicks: 0,
     mashPerSec: 0,
     mashBonus: 1,
+    achievement: [],
     upgradesOwned: [
       {
         name: "HTML",
@@ -28,7 +31,7 @@ function App() {
         perks: 0,
         bought: false,
         perksOwned: [{ owned: false }, { owned: false }, { owned: false }],
-        mutiplier: 1,
+        multiplier: 1,
       },
       {
         name: "CSS",
@@ -36,7 +39,7 @@ function App() {
         perks: 0,
         bought: false,
         perksOwned: [{ owned: false }, { owned: false }, { owned: false }],
-        mutiplier: 1,
+        multiplier: 1,
       },
       {
         name: "JavaScript",
@@ -44,7 +47,7 @@ function App() {
         perks: 0,
         bought: false,
         perksOwned: [{ owned: false }, { owned: false }, { owned: false }],
-        mutiplier: 1,
+        multiplier: 1,
       },
       {
         name: "Python",
@@ -52,7 +55,7 @@ function App() {
         perks: 0,
         bought: false,
         perksOwned: [{ owned: false }, { owned: false }, { owned: false }],
-        mutiplier: 1,
+        multiplier: 1,
       },
       {
         name: "Java",
@@ -60,7 +63,7 @@ function App() {
         perks: 0,
         bought: false,
         perksOwned: [{ owned: false }, { owned: false }, { owned: false }],
-        mutiplier: 1,
+        multiplier: 1,
       },
       {
         name: "Ruby",
@@ -68,7 +71,7 @@ function App() {
         perks: 0,
         bought: false,
         perksOwned: [{ owned: false }, { owned: false }, { owned: false }],
-        mutiplier: 1,
+        multiplier: 1,
       },
       {
         name: "C++",
@@ -76,7 +79,7 @@ function App() {
         perks: 0,
         bought: false,
         perksOwned: [{ owned: false }, { owned: false }, { owned: false }],
-        mutiplier: 1,
+        multiplier: 1,
       },
       {
         name: "Swift",
@@ -84,7 +87,7 @@ function App() {
         perks: 0,
         bought: false,
         perksOwned: [{ owned: false }, { owned: false }, { owned: false }],
-        mutiplier: 1,
+        multiplier: 1,
       },
       {
         name: "Go",
@@ -92,7 +95,7 @@ function App() {
         perks: 0,
         bought: false,
         perksOwned: [{ owned: false }, { owned: false }, { owned: false }],
-        mutiplier: 1,
+        multiplier: 1,
       },
       {
         name: "Rust",
@@ -100,7 +103,7 @@ function App() {
         perks: 0,
         bought: false,
         perksOwned: [{ owned: false }, { owned: false }, { owned: false }],
-        mutiplier: 1,
+        multiplier: 1,
       },
     ],
   };
@@ -112,6 +115,7 @@ function App() {
 
   // USEEFFECT
   // LOAD INITIAL GAME DATA
+  
   useEffect(() => {
     const cookieValue = Cookies.get("playerInfo");
     if (cookieValue) {
@@ -129,7 +133,7 @@ function App() {
       console.dir("No Cookie");
     }
   }, []);
-
+ 
   // SAVE playerInfo cookie TO COOKIE WHEN IT CHANGES
   useEffect(() => {
     if (playerInfoLoaded) {
@@ -188,7 +192,7 @@ function App() {
         (config) => config.name === upgrade.name
       );
       if (upgradeData) {
-        const upgradeModifer = upgrade.mutiplier * upgrade.number;
+        const upgradeModifer = upgrade.multiplier * upgrade.number;
 
         mashPerSec += upgradeData.mashPerSec * upgradeModifer;
       }
@@ -203,6 +207,7 @@ function App() {
       ...prevPlayerInfo,
       totalMashes: prevPlayerInfo.totalMashes + playerInfo.mashBonus,
       currentMashes: prevPlayerInfo.currentMashes + playerInfo.mashBonus,
+      totalClicks:prevPlayerInfo.totalClicks +1,
     }));
   };
   const handleSetUpgradeOpen = (index: number, open: boolean) => {
@@ -293,6 +298,45 @@ function App() {
     addCirclesToCanvas();
   }, [playerInfo.upgradesOwned]);
 
+
+
+  // Achievments
+  useEffect(() => {
+    if (playerInfoLoaded) {
+      checkAchievements();
+      console.log(playerInfo)
+    }
+  }, [playerInfo.totalMashes, playerInfo.totalClicks]);
+  
+  function checkAchievements() {
+    const { mash, total } = achievmentConfig;
+  
+    // Check mash achievements
+    mash.forEach((achievement:any) => {
+      if (playerInfo.totalMashes >= achievement.amount && !hasAchievement(achievement)) {
+        addAchievement(achievement);
+      }
+    });
+  
+    // Check total achievements
+    total.forEach((achievement:any) => {
+      if ((playerInfo.totalMashes + playerInfo.totalClicks) >= achievement.amount && !hasAchievement(achievement)) {
+        addAchievement(achievement);
+      }
+    });
+  }
+  function hasAchievement(achievement: any) {
+    return playerInfo.achievement.some((a: any) => a.name === achievement.name);
+  }
+  
+  function addAchievement(achievement: any) {
+    setPlayerInfo((prevPlayerInfo: any) => ({
+      ...prevPlayerInfo,
+      achievement: [...prevPlayerInfo.achievement, achievement],
+    }));
+  }
+  
+  
   // RETURN APP
   return (
     <div className="App">

@@ -1,0 +1,20 @@
+.stat-category{
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+ 
+
+
+}
+.stat-category h3{
+  font-size: 2rem;
+}
+.stat-category-content{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: auto;
+  
+
+}
