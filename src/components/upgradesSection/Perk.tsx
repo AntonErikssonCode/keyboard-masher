@@ -212,7 +212,6 @@ function Perk({
               }));
               break;
             case "secret":
-              console.log(bonus);
               break;
             default:
               break;

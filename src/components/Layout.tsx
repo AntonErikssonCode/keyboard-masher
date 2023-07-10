@@ -3,8 +3,7 @@ import "./layout.css";
 import Masher from "./mashSection/Masher";
 import upgradesConfig from "../config/upgradesConfig";
 import Upgrade from "./upgradesSection/Upgrade";
-import { Player } from "tone";
-
+import Stats from "./statsSection/Stats";
 interface LayoutProps {
   handleMashClick: () => void;
   playerInfo: any;
@@ -40,7 +39,7 @@ function Layout(props: LayoutProps) {
         />
       </div>
       <div className="container-stats">
-        <p>{props.playerInfo.mashBonus}</p>
+       <Stats playerInfo={props.playerInfo}/>
       </div>
     </div>
   );

@@ -211,7 +211,7 @@ function App() {
 
   
   useEffect(()=>{
-    console.log(playerInfo)
+   /*  console.log(playerInfo) */
 
   },[playerInfo])
 
