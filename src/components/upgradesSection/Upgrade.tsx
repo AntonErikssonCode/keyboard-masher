@@ -39,11 +39,12 @@ function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo }: UpgradeProps) {
     setGetNumberOfOwnedPerks(getNumberOfOwnedPerks(playerInfo, upgrade));
 
     setBought(getBought(playerInfo, upgrade));
-    setMps(shortenNumber(getMPS(mashPerSec, bought)));
+    setMps(shortenNumber(getMPS(mashPerSec, bought, playerInfo, upgrade)));
   }, [playerInfo]);
 
-  function getMPS(mashPerSec: number, bought: number) {
-    return mashPerSec * bought;
+  function getMPS(mashPerSec: number, bought: number, playerInfo:any, upgrade:any) {
+    const mutiplier = getMutiplier(playerInfo, upgrade);
+    return mashPerSec * bought *mutiplier;
   }
 
   function getNumberOfOwnedPerks(playerInfo: any, upgrade: any) {
@@ -57,6 +58,20 @@ function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo }: UpgradeProps) {
     });
     return num;
   }
+
+  function getMutiplier(playerInfo: any, upgrade: any) {
+    const upgradeName = upgrade.name;
+    const upgradesOwnedArray = playerInfo.upgradesOwned;
+    let multiplier = 0;
+    upgradesOwnedArray.forEach((element: any) => {
+      if (element.name === upgradeName) {
+        multiplier = element.mutiplier;
+      
+      }
+    });
+    return multiplier;
+  }
+  
 
   function isPerkOwned(playerInfo: any, upgrade: any, perkIndex: number) {
     const upgradeName = upgrade.name;
@@ -121,6 +136,7 @@ function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo }: UpgradeProps) {
       handleSetPlayerInfo(updatedPlayerInfo);
     }
   }
+
 
   return (
     <div className="upgradesSection">
