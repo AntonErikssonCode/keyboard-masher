@@ -17,7 +17,7 @@ function App() {
   // CONFIG CONSTS
   const expirationTimeInDays = 1;
   const defaultPlayer = {
-    currentMashes: 10000000000,
+    currentMashes:100000,
     totalMashes: 0,
     mashPerSec: 0,
     mashBonus: 1,
@@ -209,129 +209,12 @@ function App() {
     setUpgradeOpen({ index: index, open: open });
   };
 
-  // Canvas Ref
-  /* const canvasRef = useRef<HTMLCanvasElement>(null);
-  const handleCanvasDraw = () => {
-    const canvas = canvasRef.current;
-    const context = canvas?.getContext("2d");
   
-    if (!canvas || !context) {
-      return;
-    }
-  
-    // Create an array to store all circles
-    let circles: any[] = [];
-  
-    // Define the maximum radius and speed of the circles
-    const maxRadius = 10;
-    const maxSpeed = 3;
-  
-    // Generate random circles
-    const generateCircles = (numCircles: number) => {
-      for (let i = 0; i < numCircles; i++) {
-        // Generate random position and velocity for each circle
-        const x = canvas.width / 2;
-        const y = canvas.height / 2;
-        const radius = Math.random() * maxRadius + 5;
-        const speedX = (Math.random() - 0.5 + 0.05) * maxSpeed;
-        const speedY = (Math.random() - 0.5 + 0.05) * maxSpeed;
-  
-        // Push the circle object into the array
-        circles.push({ x, y, radius, speedX, speedY });
-      }
-    };
-  
-    // Animation loop
-    const animate = () => {
-      // Clear the canvas
-      context.clearRect(0, 0, canvas.width, canvas.height);
-  
-      // Update and draw each circle
-      circles.forEach((circle: any) => {
-        // Update circle position
-        circle.x += circle.speedX;
-        circle.y += circle.speedY;
-  
-        // Draw the circle
-        context.beginPath();
-        context.arc(circle.x, circle.y, circle.radius, 0, Math.PI * 2);
-        context.fillStyle = "#03A9F4";
-        context.fill();
-        context.closePath();
-  
-        // Check if the circle is outside the canvas
-        if (
-          circle.x - circle.radius > canvas.width ||
-          circle.x + circle.radius < 0 ||
-          circle.y - circle.radius > canvas.height ||
-          circle.y + circle.radius < 0
-        ) {
-          // If the circle is outside the canvas, remove it from the array
-          const index = circles.indexOf(circle);
-          circles.splice(index, 1);
-        }
-      });
-  
-      // Request animation frame to continue the animation
-      if (circles.length > 0) {
-        requestAnimationFrame(animate);
-      }
-    };
-  
-    // Generate and animate circles
-    generateCircles(15);
-    animate();
-  }; */
+  useEffect(()=>{
+    console.log(playerInfo)
 
-  /* 
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const circlesRef = useRef<Circle[]>([]);
+  },[playerInfo])
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    const context = canvas!.getContext('2d')!;
-
-    let animationFrameId: number;
-
-    const animate = () => {
-      animationFrameId = requestAnimationFrame(animate);
-      if(canvas)
-      context.clearRect(0, 0, canvas.width, canvas.height);
-
-      circlesRef.current.forEach(circle => {
-        circle.x += circle.speed;
-        context.beginPath();
-        context.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
-        context.fillStyle = '#03A9F4';
-        context.fill();
-      });
-    };
-
-    animate();
-
-    return () => cancelAnimationFrame(animationFrameId);
-  }, []);
-
-  const addCirclesToCanvas = () => {
-    const canvas = canvasRef.current;
-    const context = canvas!.getContext('2d')!;
-
-    const circle: Circle = {
-      x: canvas!.width / 2,
-      y: canvas!.height / 2,
-      speed: 1,
-      radius: 10,
-    };
-
-    circlesRef.current.push(circle);
-
-    context.beginPath();
-    context.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
-    context.fillStyle = '#FF0000';
-    context.fill();
-  };
-  
-   */
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const circlesRef = useRef<Circle[]>([]);
 

@@ -13,7 +13,7 @@ const upgradesConfig = [
         cost: 100,
         description: "Create a simple blog using HTML.",
         areas: ["Content Creation", "Web Publishing"],
-        bonus:[{type: "mash", bonusText: "+2 per Mash", mash:2}]
+        bonus:[{type: "mash", bonusText: "+2 per Mash", mash:2, multiplier:0}]
         
       },
       {
@@ -22,7 +22,9 @@ const upgradesConfig = [
         cost: 300,
         description: "Design a webpage with a nostalgic 90s look using HTML.",
         areas: ["Retro Web Design"],
-        bonus:[{type: "mutiply", bonusText: "Doubles HTML Effectivity", mutiplier:2}]
+        bonus: [
+          { type: "multiply", bonusText: "Doubles Rust Effectiveness", mash:0,  multiplier: 2, }
+        ]
       },
       {
         name: "Responsive Layout",
@@ -31,7 +33,7 @@ const upgradesConfig = [
         description:
           "Make your website adapt to different screen sizes using CSS media queries.",
         areas: ["Responsive Design"],
-        bonus:[{type: "secret", bonusText: "NERD OUT!"}]
+        bonus:[{type: "secret", bonusText: "NERD OUT!", mash:0, multiplier:0}]
       },
     ],
   },
@@ -50,7 +52,7 @@ const upgradesConfig = [
         description:
           "Add engaging animations and transitions to elements using CSS keyframes.",
         areas: ["User Experience", "Web Design"],
-        bonus:[{type: "mash", bonusText: "+5 per Mash", mash:5}]
+        bonus:[{type: "mash", bonusText: "+2 per Mash", mash:2, multiplier:0}]
       },
       {
         name: "CSS Grid Layout",
@@ -59,7 +61,9 @@ const upgradesConfig = [
         description:
           "Create complex grid-based layouts with ease using CSS grid.",
         areas: ["Layout Design", "Responsive Design"],
-        bonus:[{type: "mutiply", bonusText: "Doubles CSS Effectivity", mutiplier:2}]
+        bonus: [
+          { type: "multiply", bonusText: "Doubles Rust Effectiveness", mash:0,  multiplier: 2, }
+        ]
       },
       {
         name: "Flexbox",
@@ -68,7 +72,7 @@ const upgradesConfig = [
         description:
           "Efficiently arrange and align elements using CSS flexbox.",
         areas: ["Responsive Design", "User Interface"],
-        bonus:[{type: "secret", bonusText: "NERD OUT!"}]
+        bonus:[{type: "secret", bonusText: "NERD OUT!", mash:0, multiplier:0}]
       },
     ],
   },
@@ -86,7 +90,7 @@ const upgradesConfig = [
         cost: 20000,
         description: "Validate user inputs in forms using JavaScript.",
         areas: ["Data Validation", "Form Handling"],
-        bonus:[{type: "mash", bonusText: "+5 per Mash", mash:5}]
+        bonus:[{type: "mash", bonusText: "+2 per Mash", mash:2, multiplier:0}]
       },
       {
         name: "DOM Manipulation",
@@ -95,7 +99,9 @@ const upgradesConfig = [
         description:
           "Dynamically modify and interact with website elements using JavaScript and the Document Object Model (DOM).",
         areas: ["Dynamic Web Content", "User Interaction"],
-        bonus:[{type: "mutiply", bonusText: "Doubles JavaScript Effectivity", mutiplier:2}]
+        bonus: [
+          { type: "multiply", bonusText: "Doubles Rust Effectiveness", mash:0,  multiplier: 2, }
+        ]
       },
       {
         name: "AJAX Requests",
@@ -104,7 +110,7 @@ const upgradesConfig = [
         description:
           "Fetch and update data from the server asynchronously using JavaScript.",
         areas: ["Server Communication", "Data Retrieval"],
-        bonus:[{type: "secret", bonusText: "NERD OUT!"}]
+        bonus:[{type: "secret", bonusText: "NERD OUT!", mash:0, multiplier:0}]
       },
     ],
   },
@@ -123,7 +129,7 @@ const upgradesConfig = [
         description:
           "Perform data manipulation, exploration, and analysis using Python libraries like Pandas and NumPy.",
         areas: ["Data Science", "Data Visualization"],
-        bonus:[{type: "mash", bonusText: "+5 per Mash", mash:5}]
+        bonus:[{type: "mash", bonusText: "+2 per Mash", mash:2, multiplier:0}]
       },
       {
         name: "Web Scraping",
@@ -132,7 +138,9 @@ const upgradesConfig = [
         description:
           "Extract data from websites programmatically using Python libraries like BeautifulSoup.",
         areas: ["Data Extraction", "Web Data Mining"],
-        bonus:[{type: "mutiply", bonusText: "Doubles Python Effectivity", mutiplier:2}]
+        bonus: [
+          { type: "multiply", bonusText: "Doubles Rust Effectiveness", mash:0,  multiplier: 2, }
+        ]
       },
       {
         name: "Machine Learning",
@@ -141,7 +149,7 @@ const upgradesConfig = [
         description:
           "Build and train machine learning models using libraries like scikit-learn and TensorFlow.",
         areas: ["Artificial Intelligence", "Predictive Modeling"],
-        bonus:[{type: "secret", bonusText: "NERD OUT!"}]
+        bonus:[{type: "secret", bonusText: "NERD OUT!", mash:0, multiplier:0}]
       },
     ],
   },
@@ -160,7 +168,7 @@ const upgradesConfig = [
         description:
           "Learn the principles of object-oriented programming using Java.",
         areas: ["Software Design", "Modularity"],
-        bonus:[{type: "mash", bonusText: "+5 per Mash", mash:5}]
+        bonus:[{type: "mash", bonusText: "+2 per Mash", mash:2, multiplier:0}]
       },
       {
         name: "Database Integration",
@@ -169,7 +177,9 @@ const upgradesConfig = [
         description:
           "Connect and interact with databases using Java database connectivity (JDBC).",
         areas: ["Data Persistence", "Database Management"],
-        bonus:[{type: "mutiply", bonusText: "Doubles Java Effectivity", mutiplier:2}]
+        bonus: [
+          { type: "multiply", bonusText: "Doubles Rust Effectiveness", mash:0,  multiplier: 2, }
+        ]
       },
       {
         name: "Web Services",
@@ -178,7 +188,7 @@ const upgradesConfig = [
         description:
           "Build and consume web services using Java frameworks like Spring and JAX-RS.",
         areas: ["API Development", "Integration"],
-        bonus:[{type: "secret", bonusText: "NERD OUT!"}]
+        bonus:[{type: "secret", bonusText: "NERD OUT!", mash:0, multiplier:0}]
       },
     ],
   },
@@ -196,9 +206,7 @@ const upgradesConfig = [
         cost: 10000000000000,
         description: "Develop web applications using the Ruby on Rails framework.",
         areas: ["Web Development", "Rapid Prototyping"],
-        bonus: [
-          { type: "mash", bonusText: "+3 per Mash", mash: 3 }
-        ]
+        bonus:[{type: "mash", bonusText: "+2 per Mash", mash:2, multiplier:0}]
       },
       {
         name: "Metaprogramming",
@@ -207,7 +215,7 @@ const upgradesConfig = [
         description: "Create programs that can modify or extend their own behavior.",
         areas: ["Code Generation", "Dynamic Programming"],
         bonus: [
-          { type: "multiply", bonusText: "Doubles Ruby Effectiveness", multiplier: 2 }
+          { type: "multiply", bonusText: "Doubles Rust Effectiveness", mash:0,  multiplier: 2, }
         ]
       },
       {
@@ -216,9 +224,7 @@ const upgradesConfig = [
         cost: 20000000000000,
         description: "Utilize community-contributed libraries and tools using RubyGems.",
         areas: ["Code Reusability", "Package Management"],
-        bonus: [
-          { type: "secret", bonusText: "NERD OUT!" }
-        ]
+        bonus:[{type: "secret", bonusText: "NERD OUT!", mash:0, multiplier:0}]
       },
     ],
   },
@@ -236,9 +242,7 @@ const upgradesConfig = [
         cost: 10000000000000,
         description: "Learn manual memory allocation and deallocation techniques.",
         areas: ["Resource Optimization", "Low-level Programming"],
-        bonus: [
-          { type: "mash", bonusText: "+4 per Mash", mash: 4 }
-        ]
+        bonus:[{type: "mash", bonusText: "+2 per Mash", mash:2, multiplier:0}]
       },
       {
         name: "Template Metaprogramming",
@@ -247,7 +251,7 @@ const upgradesConfig = [
         description: "Harness the power of compile-time code generation using templates.",
         areas: ["Generic Programming", "Compile-time Optimization"],
         bonus: [
-          { type: "multiply", bonusText: "Doubles C++ Effectiveness", multiplier: 2 }
+          { type: "multiply", bonusText: "Doubles Rust Effectiveness", mash:0,  multiplier: 2, }
         ]
       },
       {
@@ -256,9 +260,7 @@ const upgradesConfig = [
         cost: 70000000000000,
         description: "Create graphics-intensive applications using the OpenGL library.",
         areas: ["Computer Graphics", "Interactive Applications"],
-        bonus: [
-          { type: "secret", bonusText: "NERD OUT!" }
-        ]
+        bonus:[{type: "secret", bonusText: "NERD OUT!", mash:0, multiplier:0}]
       },
     ],
   },
@@ -276,9 +278,7 @@ const upgradesConfig = [
         cost: 50000000000000,
         description: "Build user interfaces for iOS applications using UIKit.",
         areas: ["iOS Development", "User Interface Design"],
-        bonus: [
-          { type: "mash", bonusText: "+5 per Mash", mash: 5 }
-        ]
+        bonus:[{type: "mash", bonusText: "+2 per Mash", mash:2, multiplier:0}]
       },
       {
         name: "Core Data",
@@ -287,7 +287,7 @@ const upgradesConfig = [
         description: "Persist and manage application data using Core Data.",
         areas: ["Data Persistence", "Database Management"],
         bonus: [
-          { type: "multiply", bonusText: "Doubles Swift Effectiveness", multiplier: 2 }
+          { type: "multiply", bonusText: "Doubles Rust Effectiveness", mash:0,  multiplier: 2, }
         ]
       },
       {
@@ -296,9 +296,7 @@ const upgradesConfig = [
         cost: 1000000000000000,
         description: "Build reactive and asynchronous apps using the Combine framework.",
         areas: ["Reactive Programming", "Asynchronous Operations"],
-        bonus: [
-          { type: "secret", bonusText: "NERD OUT!" }
-        ]
+        bonus:[{type: "secret", bonusText: "NERD OUT!", mash:0, multiplier:0}]
       },
     ],
   },
@@ -316,9 +314,7 @@ const upgradesConfig = [
         cost: 10000000000000006,
         description: "Use lightweight threads (goroutines) for concurrent programming.",
         areas: ["Concurrency", "Parallelism"],
-        bonus: [
-          { type: "mash", bonusText: "+6 per Mash", mash: 6 }
-        ]
+        bonus:[{type: "mash", bonusText: "+2 per Mash", mash:2, multiplier:0}]
       },
       {
         name: "Standard Library",
@@ -327,7 +323,7 @@ const upgradesConfig = [
         description: "Leverage the powerful built-in functionalities of the Go standard library.",
         areas: ["Code Reusability", "Efficiency"],
         bonus: [
-          { type: "multiply", bonusText: "Doubles Go Effectiveness", multiplier: 2 }
+          { type: "multiply", bonusText: "Doubles Rust Effectiveness", mash:0,  multiplier: 2, }
         ]
       },
       {
@@ -336,9 +332,7 @@ const upgradesConfig = [
         cost: 30000000000000006,
         description: "Build scalable web applications using Go's web development frameworks.",
         areas: ["Web Development", "API Development"],
-        bonus: [
-          { type: "secret", bonusText: "NERD OUT!" }
-        ]
+        bonus:[{type: "secret", bonusText: "NERD OUT!", mash:0, multiplier:0}]
       },
     ],
   },
@@ -356,9 +350,7 @@ const upgradesConfig = [
         cost: 100000000000000006,
         description: "Utilize Rust's ownership system for memory safety and thread safety.",
         areas: ["Memory Management", "Concurrency"],
-        bonus: [
-          { type: "mash", bonusText: "+7 per Mash", mash: 7 }
-        ]
+        bonus:[{type: "mash", bonusText: "+2 per Mash", mash:2, multiplier:0}]
       },
       {
         name: "Asynchronous Programming",
@@ -367,7 +359,7 @@ const upgradesConfig = [
         description: "Write efficient asynchronous code using Rust's async/await syntax.",
         areas: ["Asynchronous Operations", "Concurrency"],
         bonus: [
-          { type: "multiply", bonusText: "Doubles Rust Effectiveness", multiplier: 2 }
+          { type: "multiply", bonusText: "Doubles Rust Effectiveness", mash:0,  multiplier: 2, }
         ]
       },
       {
@@ -376,9 +368,7 @@ const upgradesConfig = [
         cost: 9999999999999999999,
         description: "Develop low-level code for embedded systems using Rust.",
         areas: ["IoT Development", "Embedded Programming"],
-        bonus: [
-          { type: "secret", bonusText: "NERD OUT!" }
-        ]
+        bonus:[{type: "secret", bonusText: "NERD OUT!", mash:0, multiplier:0}]
       },
     ],
   },

@@ -64,8 +64,7 @@ function Perk({
       }
     });
   } */
-
-  function addPerkBonus(upgradeName: string, perkIndex: number) {
+  /* function addPerkBonus(upgradeName: string, perkIndex: number) {
     const selectedUpgrade = upgradesConfig.find(
       (upgrade) => upgrade.name === upgradeName
     );
@@ -75,17 +74,24 @@ function Perk({
 
       if (selectedPerk) {
         selectedPerk.bonus.forEach((bonus) => {
-          console.log(bonus.type);
           switch (bonus.type) {
             case "mash":
+              const addMash = bonus.mash;
+              console.log(addMash);
+              console.log(playerInfo);
 
-            
+              handleSetPlayerInfo((prevPlayerInfo: any) => ({
+                ...prevPlayerInfo,
+                mashBonus:  prevPlayerInfo.mashBonus + addMash,
+              }));
+
               break;
-            case "mutiply":
+            case "multiply":
+              console.log(bonus);
               break;
             case "secret":
+              console.log(bonus);
               break;
-
             default:
               break;
           }
@@ -94,17 +100,22 @@ function Perk({
     }
   }
 
+
   function handleBuyPerk() {
     setIsBought(true);
-
+    let nameFunction = "";
+    let indexFunction = 0;
+    let perkFound = false;
     handleSetPlayerInfo((prevPlayerInfo: any) => {
       const updatedUpgradesOwned = prevPlayerInfo.upgradesOwned.map(
         (upgrade: any) => {
           if (upgrade.name === upgradeName) {
+            nameFunction = upgradeName;
             const updatedPerksOwned = upgrade.perksOwned.map(
               (perkOwned: any, perkIndex: number) => {
                 if (perkIndex === index) {
-                  addPerkBonus(upgradeName, perkIndex);
+                  indexFunction=index;
+                  perkFound = true;
                   return { owned: true };
                 }
                 return perkOwned;
@@ -126,8 +137,77 @@ function Perk({
         upgradesOwned: updatedUpgradesOwned,
       };
     });
+    if(perkFound){
+      addPerkBonus(nameFunction, indexFunction);
+    }
+   
+  } */
+  function handleBuyPerk() {
+    setIsBought(true);
+    handleSetPlayerInfo((prevPlayerInfo: any) => {
+      const updatedUpgradesOwned = prevPlayerInfo.upgradesOwned.map(
+        (upgrade: any) => {
+          if (upgrade.name === upgradeName) {
+            const updatedPerksOwned = upgrade.perksOwned.map(
+              (perkOwned: any, perkIndex: number) => {
+                if (perkIndex === index) {
+                  return { owned: true };
+                }
+                return perkOwned;
+              }
+            );
+  
+            return {
+              ...upgrade,
+              perksOwned: updatedPerksOwned,
+            };
+          }
+  
+          return upgrade;
+        }
+      );
+  
+      return {
+        ...prevPlayerInfo,
+        upgradesOwned: updatedUpgradesOwned,
+      };
+    });
+  
+    addPerkBonus(upgradeName, index);
   }
-
+  
+  function addPerkBonus(upgradeName: string, perkIndex: number) {
+    const selectedUpgrade = upgradesConfig.find(
+      (upgrade) => upgrade.name === upgradeName
+    );
+  
+    if (selectedUpgrade) {
+      const selectedPerk = selectedUpgrade.perks[perkIndex];
+  
+      if (selectedPerk) {
+        selectedPerk.bonus.forEach((bonus) => {
+          switch (bonus.type) {
+            case "mash":
+              const addMash = bonus.mash;
+              handleSetPlayerInfo((prevPlayerInfo: any) => ({
+                ...prevPlayerInfo,
+                mashBonus: prevPlayerInfo.mashBonus + addMash,
+              }));
+              break;
+            case "multiply":
+              console.log(bonus);
+              break;
+            case "secret":
+              console.log(bonus);
+              break;
+            default:
+              break;
+          }
+        });
+      }
+    }
+  }
+  
   return (
     <div
       className={`perk default-border crazy-box-shadow ${

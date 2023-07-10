@@ -39,7 +39,9 @@ function Layout(props: LayoutProps) {
           mashBonus={props.playerInfo.mashBonus}
         />
       </div>
-      <div className="container-stats"></div>
+      <div className="container-stats">
+        <p>{props.playerInfo.mashBonus}</p>
+      </div>
     </div>
   );
 }
