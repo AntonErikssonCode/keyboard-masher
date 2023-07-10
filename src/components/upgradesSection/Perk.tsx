@@ -195,7 +195,21 @@ function Perk({
               }));
               break;
             case "multiply":
-              console.log(bonus);
+              const multiplier = bonus.multiplier;
+              handleSetPlayerInfo((prevPlayerInfo: any) => ({
+                ...prevPlayerInfo,
+                upgradesOwned: prevPlayerInfo.upgradesOwned.map(
+                  (upgrade: any) => {
+                    if (upgrade.name === upgradeName) {
+                      return {
+                        ...upgrade,
+                        mutiplier: upgrade.mutiplier * multiplier,
+                      };
+                    }
+                    return upgrade;
+                  }
+                ),
+              }));
               break;
             case "secret":
               console.log(bonus);
@@ -207,6 +221,7 @@ function Perk({
       }
     }
   }
+  
   
   return (
     <div
