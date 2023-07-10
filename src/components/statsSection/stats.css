@@ -30,6 +30,7 @@
   height: 100%;
 }
 .stats-top-expanded{
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -67,7 +68,61 @@
  
 
 }
+.stats-close-button{
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
 
+.stats-close-button {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  background-color: var(--background-color2);
+
+}
+
+.stats-close-button:hover {
+    scale: 1.1;
+}
+
+.stats-close-button::before,
+.stats-close-button::after {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background-color: var(--text-color);
+}
+
+.stats-close-button::before {
+  transform: rotate(45deg);
+}
+
+.stats-close-button::after {
+  transform: rotate(-45deg);
+}
+
+.stats-close-button:hover::before,
+.stats-close-button:hover::after {
+  background-color: var(--text-color);
+}
+
+
+
+
+.hidden{
+  display: hidden;
+}
 .stats-summary{
 
 }
@@ -123,3 +178,6 @@
 .achievement-text{
   flex-grow: 1;
 }
+
+
+

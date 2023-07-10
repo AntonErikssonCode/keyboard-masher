@@ -15,21 +15,25 @@
   justify-content: space-between;
   align-items: center;
   transform: translateX(-110%);
-  transition: all 0.1s ease-out 0s;
+  transition: all 0.1s ease-out 0s ;
+  opacity: 0;
 }
 
 
 
 .perks-animate.perk0 {
   transform: translateX(0);
+  opacity: 1;
   transition: all 0.1s ease-out 0s;
 }
 .perks-animate.perk1 {
   transform: translateX(0);
+  opacity: 1;
   transition: all 0.1s ease-out 0.1s;
 }
 .perks-animate.perk2 {
   transform: translateX(0);
+  opacity: 1;
   transition: all 0.1s ease-out 0.2s;
 }
 .perk-info {
@@ -53,4 +57,9 @@
 
 .cant-afford-upgrade {
   background-color: var(--accent-color-3);
+}
+
+.perk-info-small{
+font-weight: 400;
+font-style: italic;
 }

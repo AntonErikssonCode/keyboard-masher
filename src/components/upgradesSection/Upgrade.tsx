@@ -151,8 +151,10 @@ function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo, index}: UpgradeProp
   
 
   return (
-    <div className="upgradesSection" title={description} >
+    <div className="upgradesSection">
       <div
+       title={description} 
+       data-title={description} 
         className="upgrades-container crazy-box-shadow default-border"
         onClick={handleOpen}
       >

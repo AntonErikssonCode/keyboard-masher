@@ -12,7 +12,12 @@ function Stats({ playerInfo }: StatsProps) {
   const [expanded, setExpanded] = useState(true);
 
   function handleExpand() {
+    
     setExpanded(!expanded);
+  }
+  function handleButtonExpand(event: React.MouseEvent<HTMLButtonElement>) {
+    event.stopPropagation();
+    handleExpand();
   }
 
   return (
@@ -22,7 +27,14 @@ function Stats({ playerInfo }: StatsProps) {
         expanded ? "stats-container-expanded" : ""
       }`}
     >
-      <div className={`stats-top ${expanded ? "stats-top-expanded" : ""}`}>
+      <div
+       
+        className={`stats-top ${expanded ? "stats-top-expanded" : ""}`}
+      >
+        <button
+          className={`stats-close-button ${expanded ? "" : "hidden"}`}
+          onClick={handleExpand}
+        ></button>
         <div className="stats-img-container ">
           <img src={statsIMG} className="stats-img" />
         </div>
@@ -87,7 +99,10 @@ function Stats({ playerInfo }: StatsProps) {
 
               if (totalMash > cost) {
                 return (
-                  <div className="stats-row-no-gap" key={"stats" + name + index}>
+                  <div
+                    className="stats-row-no-gap"
+                    key={"stats" + name + index}
+                  >
                     <div className="stats-row-part">
                       <p>{name}</p>
                     </div>
@@ -120,17 +135,19 @@ function Stats({ playerInfo }: StatsProps) {
           </StatsCategory>
           <StatsCategory title="Achievements">
             <div className="achievements">
-              {playerInfo.achievement.map((achievement: any) => {
+              {playerInfo.achievement.map((achievement: any, index: number) => {
                 let color = "#fff";
-                let text= ""
+                let text = "";
                 switch (achievement.type) {
                   case "mash":
                     color = "#8BC34A";
-                    text = `You mashed the laptop ${shortenNumber(achievement.amount)} times!`
+                    text = `You mashed the laptop ${shortenNumber(
+                      achievement.amount
+                    )} times!`;
                     break;
                   case "total":
                     color = "#FF4081";
-                    text = `${shortenNumber(achievement.amount)} Total Mashes!`
+                    text = `${shortenNumber(achievement.amount)} Total Mashes!`;
                     break;
 
                   default:
@@ -138,8 +155,19 @@ function Stats({ playerInfo }: StatsProps) {
                 }
 
                 return (
-                  <div title={achievement.tooltip} className="achievement" /* style={{background: color}} */>
-                    <div className="achievement-first-row"><div style={{background: color}} className="achievement-first-row-dot"></div><h4 className="achievement-text">{achievement.name}</h4><h5>{text}</h5></div>
+                  <div
+                    key={"achievement" + index}
+                    title={achievement.tooltip}
+                    className="achievement" /* style={{background: color}} */
+                  >
+                    <div className="achievement-first-row">
+                      <div
+                        style={{ background: color }}
+                        className="achievement-first-row-dot"
+                      ></div>
+                      <h4 className="achievement-text">{achievement.name}</h4>
+                      <h5>{text}</h5>
+                    </div>
                     <p className="achievement-text">{achievement.tooltip}</p>
                   </div>
                 );

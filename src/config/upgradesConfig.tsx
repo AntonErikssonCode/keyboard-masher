@@ -1,4 +1,4 @@
-const upgradesConfig = [
+/* const upgradesConfig = [
   {
     name: "HTML",
     difficulty: "Beginner",
@@ -8,32 +8,42 @@ const upgradesConfig = [
     areas: ["Web Development", "Front-end Development"],
     perks: [
       {
-        name: "Basic Blog",
-        parent:"HTML",
+        name: "Cat Blog",
+        parent: "HTML",
         cost: 100,
-        description: "Create a simple blog using HTML.",
+        description:
+          "Share your love for cats and make grandma's heart melt with HTML magic. It's purrfect!",
         areas: ["Content Creation", "Web Publishing"],
-        bonus:[{type: "mash", bonusText: "+2 per Mash", mash:2, multiplier:0}]
-        
+        bonus: [
+          { type: "mash", bonusText: "+2 per Mash", mash: 2, multiplier: 0 },
+        ],
       },
       {
-        name: "Webpage from the 90s",
-        parent:"HTML",
+        name: "90s Style Webpage",
+        parent: "HTML",
         cost: 300,
-        description: "Design a webpage with a nostalgic 90s look using HTML.",
+        description:
+          "Take a wild trip back to the 90s and unleash the most eye-searing web design known to humanity. AAAAAHHHH!",
         areas: ["Retro Web Design"],
         bonus: [
-          { type: "multiply", bonusText: "Doubles Rust Effectiveness", mash:0,  multiplier: 2, }
-        ]
+          {
+            type: "multiply",
+            bonusText: "Doubles Rust Effectiveness",
+            mash: 0,
+            multiplier: 2,
+          },
+        ],
       },
       {
         name: "Responsive Layout",
-        parent:"HTML",
+        parent: "HTML",
         cost: 500,
         description:
-          "Make your website adapt to different screen sizes using CSS media queries.",
+          "Make your web masterpieces shine even on your vintage, duct-taped Sony Ericsson W810i. Now that's dedication!",
         areas: ["Responsive Design"],
-        bonus:[{type: "secret", bonusText: "NERD OUT!", mash:0, multiplier:0}]
+        bonus: [
+          { type: "secret", bonusText: "NERD OUT!", mash: 0, multiplier: 0 },
+        ],
       },
     ],
   },
@@ -46,33 +56,42 @@ const upgradesConfig = [
     areas: ["Web Development", "Front-end Development"],
     perks: [
       {
-        name: "Animated Transitions",
-        parent:"CSS",
+        name: "Pixar-Level Animations",
+        parent: "CSS",
         cost: 2000,
         description:
-          "Add engaging animations and transitions to elements using CSS keyframes.",
+          "Bring your divs to life with animations that would make Pixar jealous. You're the director of web magic!",
         areas: ["User Experience", "Web Design"],
-        bonus:[{type: "mash", bonusText: "+2 per Mash", mash:2, multiplier:0}]
+        bonus: [
+          { type: "mash", bonusText: "+2 per Mash", mash: 2, multiplier: 0 },
+        ],
       },
       {
-        name: "CSS Grid Layout",
-        parent:"CSS",
+        name: "FlexBoss",
+        parent: "CSS",
         cost: 5000,
         description:
-          "Create complex grid-based layouts with ease using CSS grid.",
+          "Unlock the secret art of div centering and become the ultimate FlexBoss. No more awkwardly aligned elements!",
         areas: ["Layout Design", "Responsive Design"],
         bonus: [
-          { type: "multiply", bonusText: "Doubles Rust Effectiveness", mash:0,  multiplier: 2, }
-        ]
+          {
+            type: "multiply",
+            bonusText: "Doubles Rust Effectiveness",
+            mash: 0,
+            multiplier: 2,
+          },
+        ],
       },
       {
-        name: "Flexbox",
-        parent:"CSS",
+        name: "Color Gradient Maestro",
+        parent: "CSS",
         cost: 10000,
         description:
-          "Efficiently arrange and align elements using CSS flexbox.",
+          "Master the fine art of creating a color gradient that starts with brown and ends with an even darker brown. It's the subtle elegance!",
         areas: ["Responsive Design", "User Interface"],
-        bonus:[{type: "secret", bonusText: "NERD OUT!", mash:0, multiplier:0}]
+        bonus: [
+          { type: "secret", bonusText: "NERD OUT!", mash: 0, multiplier: 0 },
+        ],
       },
     ],
   },
@@ -85,32 +104,42 @@ const upgradesConfig = [
     areas: ["Web Development", "Front-end Development"],
     perks: [
       {
-        name: "Form Validation",
-        parent:"JavaScript",
+        name: "Basic Logic",
+        parent: "JavaScript",
         cost: 20000,
-        description: "Validate user inputs in forms using JavaScript.",
+        description:
+          "Thanks to the Greek philosophers, your keyboard now suffers from mistreatment. That's just great!",
         areas: ["Data Validation", "Form Handling"],
-        bonus:[{type: "mash", bonusText: "+2 per Mash", mash:2, multiplier:0}]
+        bonus: [
+          { type: "mash", bonusText: "+2 per Mash", mash: 2, multiplier: 0 },
+        ],
       },
       {
-        name: "DOM Manipulation",
-        parent:"JavaScript",
+        name: "DOM Sorcery",
+        parent: "JavaScript",
         cost: 40000,
         description:
-          "Dynamically modify and interact with website elements using JavaScript and the Document Object Model (DOM).",
+          "Unleash your power to manipulate the Document Object Model (DOM) and make elements dance to your tune.",
         areas: ["Dynamic Web Content", "User Interaction"],
         bonus: [
-          { type: "multiply", bonusText: "Doubles Rust Effectiveness", mash:0,  multiplier: 2, }
-        ]
+          {
+            type: "multiply",
+            bonusText: "Doubles Rust Effectiveness",
+            mash: 0,
+            multiplier: 2,
+          },
+        ],
       },
       {
-        name: "AJAX Requests",
-        parent:"JavaScript",
+        name: "Wild on the Pokémon API",
+        parent: "JavaScript",
         cost: 100000,
         description:
-          "Fetch and update data from the server asynchronously using JavaScript.",
+          "Embark on an adventure through the mystical realms of the Pokémon API. Gotta catch 'em all, programmatically!",
         areas: ["Server Communication", "Data Retrieval"],
-        bonus:[{type: "secret", bonusText: "NERD OUT!", mash:0, multiplier:0}]
+        bonus: [
+          { type: "secret", bonusText: "NERD OUT!", mash: 0, multiplier: 0 },
+        ],
       },
     ],
   },
@@ -123,108 +152,138 @@ const upgradesConfig = [
     areas: ["Software Development", "Data Analysis"],
     perks: [
       {
-        name: "Data Analysis",
-        parent:"Python",
+        name: "Attempt to Load MNIST",
+        parent: "Python",
         cost: 150000,
         description:
-          "Perform data manipulation, exploration, and analysis using Python libraries like Pandas and NumPy.",
+          "Embark on a daring mission to load the MNIST dataset. Will you conquer the data or be overwhelmed?",
         areas: ["Data Science", "Data Visualization"],
-        bonus:[{type: "mash", bonusText: "+2 per Mash", mash:2, multiplier:0}]
+        bonus: [
+          { type: "mash", bonusText: "+2 per Mash", mash: 2, multiplier: 0 },
+        ],
       },
       {
-        name: "Web Scraping",
-        parent:"Python",
+        name: "Web Scraping Shenanigans",
+        parent: "Python",
         cost: 450000,
         description:
-          "Extract data from websites programmatically using Python libraries like BeautifulSoup.",
+          "Master the art of web scraping and extract hidden treasures of data from the vast realms of the internet.",
         areas: ["Data Extraction", "Web Data Mining"],
         bonus: [
-          { type: "multiply", bonusText: "Doubles Rust Effectiveness", mash:0,  multiplier: 2, }
-        ]
+          {
+            type: "multiply",
+            bonusText: "Doubles Rust Effectiveness",
+            mash: 0,
+            multiplier: 2,
+          },
+        ],
       },
       {
-        name: "Machine Learning",
-        parent:"Python",
+        name: "Skynet Activation",
+        parent: "Python",
         cost: 600000,
         description:
-          "Build and train machine learning models using libraries like scikit-learn and TensorFlow.",
+          "Dive into the realm of artificial intelligence and predictive modeling. Will you create the next Skynet or save humanity?",
         areas: ["Artificial Intelligence", "Predictive Modeling"],
-        bonus:[{type: "secret", bonusText: "NERD OUT!", mash:0, multiplier:0}]
+        bonus: [
+          { type: "secret", bonusText: "NERD OUT!", mash: 0, multiplier: 0 },
+        ],
       },
     ],
   },
   {
     name: "Java",
     difficulty: "Beginner",
-    description: "Build Scalable Applications",
+    description: "Building castles in code!",
     cost: 100000,
     mashPerSec: 5500,
     areas: ["Software Development", "Back-end Development"],
     perks: [
       {
-        name: "Object-Oriented Programming",
-        parent:"Java",
+        name: "Verbose much?",
+        parent: "Java",
         cost: 2000000,
         description:
-          "Learn the principles of object-oriented programming using Java.",
+          "Embrace the verbosity! Write novels of code with meticulous details, leaving no stone unturned in the quest for precision.",
         areas: ["Software Design", "Modularity"],
-        bonus:[{type: "mash", bonusText: "+2 per Mash", mash:2, multiplier:0}]
+        bonus: [
+          { type: "mash", bonusText: "+2 per Mash", mash: 2, multiplier: 0 },
+        ],
       },
       {
-        name: "Database Integration",
-        parent:"Java",
+        name: "Database Dominator",
+        parent: "Java",
         cost: 3000000000,
         description:
-          "Connect and interact with databases using Java database connectivity (JDBC).",
+          "Rule the databases like a mighty monarch, wielding the power of Java to conquer the realm of data persistence and management.",
         areas: ["Data Persistence", "Database Management"],
         bonus: [
-          { type: "multiply", bonusText: "Doubles Rust Effectiveness", mash:0,  multiplier: 2, }
-        ]
+          {
+            type: "multiply",
+            bonusText: "Doubles Rust Effectiveness",
+            mash: 0,
+            multiplier: 2,
+          },
+        ],
       },
       {
-        name: "Web Services",
-        parent:"Java",
+        name: "Checked Exception Enigma",
+        parent: "Java",
         cost: 5000000000,
         description:
-          "Build and consume web services using Java frameworks like Spring and JAX-RS.",
+          "Unlock the mysteries of checked exceptions, a puzzle wrapped in a conundrum. Navigate the intricate paths of error handling with finesse!",
         areas: ["API Development", "Integration"],
-        bonus:[{type: "secret", bonusText: "NERD OUT!", mash:0, multiplier:0}]
+        bonus: [
+          { type: "secret", bonusText: "NERD OUT!", mash: 0, multiplier: 0 },
+        ],
       },
     ],
   },
   {
     name: "Ruby",
     difficulty: "Beginner",
-    description: "Elegant and readable programming language",
+    description: "The elegant art of code poetry.",
     cost: 10000000,
     mashPerSec: 15000,
     areas: ["Web Development", "Scripting"],
     perks: [
       {
-        name: "Rails Framework",
+        name: "GEMS!!!",
         parent: "Ruby",
         cost: 10000000000000,
-        description: "Develop web applications using the Ruby on Rails framework.",
+        description:
+          "Dive into the treasure trove of Ruby gems! Unleash the power of community-contributed code and bring magic to your projects.",
         areas: ["Web Development", "Rapid Prototyping"],
-        bonus:[{type: "mash", bonusText: "+2 per Mash", mash:2, multiplier:0}]
+        bonus: [
+          { type: "mash", bonusText: "+2 per Mash", mash: 2, multiplier: 0 },
+        ],
       },
       {
-        name: "Metaprogramming",
+        name: "Metamagic",
         parent: "Ruby",
         cost: 20000000000000,
-        description: "Create programs that can modify or extend their own behavior.",
+        description:
+          "Step into the realm of metaprogramming, where you bend the laws of coding reality. Shape and mold your code with spellbinding flexibility.",
         areas: ["Code Generation", "Dynamic Programming"],
         bonus: [
-          { type: "multiply", bonusText: "Doubles Rust Effectiveness", mash:0,  multiplier: 2, }
-        ]
+          {
+            type: "multiply",
+            bonusText: "Doubles Rust Effectiveness",
+            mash: 0,
+            multiplier: 2,
+          },
+        ],
       },
       {
-        name: "RubyGems",
+        name: "Chooo Chooo!",
         parent: "Ruby",
         cost: 20000000000000,
-        description: "Utilize community-contributed libraries and tools using RubyGems.",
+        description:
+          "All aboard the Ruby on Rails express! Journey through the vast landscape of web development with speed, efficiency, and a touch of elegance.",
         areas: ["Code Reusability", "Package Management"],
-        bonus:[{type: "secret", bonusText: "NERD OUT!", mash:0, multiplier:0}]
+        bonus: [
+          { type: "secret", bonusText: "NERD OUT!", mash: 0, multiplier: 0 },
+        ],
       },
     ],
   },
@@ -237,30 +296,39 @@ const upgradesConfig = [
     areas: ["System Programming", "Game Development"],
     perks: [
       {
-        name: "Memory Management",
+        name: "*Pointer here, *pointer there",
         parent: "C++",
         cost: 10000000000000,
-        description: "Learn manual memory allocation and deallocation techniques.",
+        description: "",
         areas: ["Resource Optimization", "Low-level Programming"],
-        bonus:[{type: "mash", bonusText: "+2 per Mash", mash:2, multiplier:0}]
+        bonus: [
+          { type: "mash", bonusText: "+2 per Mash", mash: 2, multiplier: 0 },
+        ],
       },
       {
-        name: "Template Metaprogramming",
+        name: "Simulate Smoke",
         parent: "C++",
         cost: 20000000000000,
-        description: "Harness the power of compile-time code generation using templates.",
+        description: "WebGL",
         areas: ["Generic Programming", "Compile-time Optimization"],
         bonus: [
-          { type: "multiply", bonusText: "Doubles Rust Effectiveness", mash:0,  multiplier: 2, }
-        ]
+          {
+            type: "multiply",
+            bonusText: "Doubles Rust Effectiveness",
+            mash: 0,
+            multiplier: 2,
+          },
+        ],
       },
       {
-        name: "OpenGL",
+        name: "TrashTalk C",
         parent: "C++",
         cost: 70000000000000,
-        description: "Create graphics-intensive applications using the OpenGL library.",
+        description: "",
         areas: ["Computer Graphics", "Interactive Applications"],
-        bonus:[{type: "secret", bonusText: "NERD OUT!", mash:0, multiplier:0}]
+        bonus: [
+          { type: "secret", bonusText: "NERD OUT!", mash: 0, multiplier: 0 },
+        ],
       },
     ],
   },
@@ -273,30 +341,39 @@ const upgradesConfig = [
     areas: ["Mobile App Development", "iOS Development"],
     perks: [
       {
-        name: "UIKit Framework",
+        name: "Get a job at Apple",
         parent: "Swift",
         cost: 50000000000000,
-        description: "Build user interfaces for iOS applications using UIKit.",
+        description: "",
         areas: ["iOS Development", "User Interface Design"],
-        bonus:[{type: "mash", bonusText: "+2 per Mash", mash:2, multiplier:0}]
+        bonus: [
+          { type: "mash", bonusText: "+2 per Mash", mash: 2, multiplier: 0 },
+        ],
       },
       {
-        name: "Core Data",
+        name: "Become A hipster",
         parent: "Swift",
         cost: 650000000000000,
-        description: "Persist and manage application data using Core Data.",
+        description: "",
         areas: ["Data Persistence", "Database Management"],
         bonus: [
-          { type: "multiply", bonusText: "Doubles Rust Effectiveness", mash:0,  multiplier: 2, }
-        ]
+          {
+            type: "multiply",
+            bonusText: "Doubles Rust Effectiveness",
+            mash: 0,
+            multiplier: 2,
+          },
+        ],
       },
       {
-        name: "Combine Framework",
+        name: "Combine Magic",
         parent: "Swift",
         cost: 1000000000000000,
-        description: "Build reactive and asynchronous apps using the Combine framework.",
+        description: "",
         areas: ["Reactive Programming", "Asynchronous Operations"],
-        bonus:[{type: "secret", bonusText: "NERD OUT!", mash:0, multiplier:0}]
+        bonus: [
+          { type: "secret", bonusText: "NERD OUT!", mash: 0, multiplier: 0 },
+        ],
       },
     ],
   },
@@ -309,30 +386,39 @@ const upgradesConfig = [
     areas: ["Backend Development", "Network Applications"],
     perks: [
       {
-        name: "Goroutines",
+        name: "Brag about your Google internship",
         parent: "Go",
         cost: 10000000000000006,
-        description: "Use lightweight threads (goroutines) for concurrent programming.",
+        description: "",
         areas: ["Concurrency", "Parallelism"],
-        bonus:[{type: "mash", bonusText: "+2 per Mash", mash:2, multiplier:0}]
+        bonus: [
+          { type: "mash", bonusText: "+2 per Mash", mash: 2, multiplier: 0 },
+        ],
       },
       {
-        name: "Standard Library",
+        name: "Goroutine Ninjas",
         parent: "Go",
         cost: 20000000000000006,
-        description: "Leverage the powerful built-in functionalities of the Go standard library.",
+        description: "",
         areas: ["Code Reusability", "Efficiency"],
         bonus: [
-          { type: "multiply", bonusText: "Doubles Rust Effectiveness", mash:0,  multiplier: 2, }
-        ]
+          {
+            type: "multiply",
+            bonusText: "Doubles Rust Effectiveness",
+            mash: 0,
+            multiplier: 2,
+          },
+        ],
       },
       {
-        name: "Web Development",
+        name: "Code Simplicity! ",
         parent: "Go",
         cost: 30000000000000006,
-        description: "Build scalable web applications using Go's web development frameworks.",
+        description: "",
         areas: ["Web Development", "API Development"],
-        bonus:[{type: "secret", bonusText: "NERD OUT!", mash:0, multiplier:0}]
+        bonus: [
+          { type: "secret", bonusText: "NERD OUT!", mash: 0, multiplier: 0 },
+        ],
       },
     ],
   },
@@ -345,32 +431,521 @@ const upgradesConfig = [
     areas: ["System Programming", "Embedded Systems"],
     perks: [
       {
-        name: "Ownership System",
+        name: "Safe but firm",
         parent: "Rust",
         cost: 100000000000000006,
-        description: "Utilize Rust's ownership system for memory safety and thread safety.",
+        description: "",
         areas: ["Memory Management", "Concurrency"],
-        bonus:[{type: "mash", bonusText: "+2 per Mash", mash:2, multiplier:0}]
+        bonus: [
+          { type: "mash", bonusText: "+2 per Mash", mash: 2, multiplier: 0 },
+        ],
       },
       {
-        name: "Asynchronous Programming",
-        parent: "Rust",
+        name: "Be",
+        parent: "Crabsticks",
         cost: 300000000000000006,
-        description: "Write efficient asynchronous code using Rust's async/await syntax.",
+        description: "",
         areas: ["Asynchronous Operations", "Concurrency"],
         bonus: [
-          { type: "multiply", bonusText: "Doubles Rust Effectiveness", mash:0,  multiplier: 2, }
-        ]
+          {
+            type: "multiply",
+            bonusText: "Doubles Rust Effectiveness",
+            mash: 0,
+            multiplier: 2,
+          },
+        ],
       },
       {
         name: "Embedded Systems",
         parent: "Rust",
         cost: 9999999999999999999,
-        description: "Develop low-level code for embedded systems using Rust.",
+        description: "",
         areas: ["IoT Development", "Embedded Programming"],
-        bonus:[{type: "secret", bonusText: "NERD OUT!", mash:0, multiplier:0}]
+        bonus: [
+          { type: "secret", bonusText: "NERD OUT!", mash: 0, multiplier: 0 },
+        ],
       },
     ],
   },
 ];
 export default upgradesConfig;
+ */
+const upgradesConfig = [
+  {
+    name: "HTML",
+    difficulty: "Beginner",
+    description: "Build Website Structures",
+    cost: 50,
+    mashPerSec: 1,
+    areas: ["Web Development", "Front-end Development"],
+    perks: [
+      {
+        name: "Cat Blog",
+        parent: "HTML",
+        cost: 100,
+        description:
+          "Share your love for cats and make grandma's heart melt with HTML magic. It's purrfect!",
+        areas: ["Content Creation", "Web Publishing"],
+        bonus: [
+          { type: "mash", bonusText: "+2 per Mash", mash: 2, multiplier: 0 },
+        ],
+      },
+      {
+        name: "90s Style Webpage",
+        parent: "HTML",
+        cost: 300,
+        description:
+          "Take a wild trip back to the 90s and unleash the most eye-searing web design known to humanity. AAAAAHHHH!",
+        areas: ["Retro Web Design"],
+        bonus: [
+          {
+            type: "multiply",
+            bonusText: "Doubles Rust Effectiveness",
+            mash: 0,
+            multiplier: 2,
+          },
+        ],
+      },
+      {
+        name: "Responsive Layout",
+        parent: "HTML",
+        cost: 500,
+        description:
+          "Make your web masterpieces shine even on your vintage, duct-taped Sony Ericsson W810i. Now that's dedication!",
+        areas: ["Responsive Design"],
+        bonus: [
+          { type: "secret", bonusText: "NERD OUT!", mash: 0, multiplier: 0 },
+        ],
+      },
+    ],
+  },
+  {
+    name: "CSS",
+    difficulty: "Beginner",
+    description: "Style Website Elements",
+    cost: 250,
+    mashPerSec: 5,
+    areas: ["Web Development", "Front-end Development"],
+    perks: [
+      {
+        name: "Pixar-Level Animations",
+        parent: "CSS",
+        cost: 2000,
+        description:
+          "Bring your divs to life with animations that would make Pixar jealous. You're the director of web magic!",
+        areas: ["User Experience", "Web Design"],
+        bonus: [
+          { type: "mash", bonusText: "+2 per Mash", mash: 2, multiplier: 0 },
+        ],
+      },
+      {
+        name: "FlexBoss",
+        parent: "CSS",
+        cost: 5000,
+        description:
+          "Unlock the secret art of div centering and become the ultimate FlexBoss. No more awkwardly aligned elements!",
+        areas: ["Layout Design", "Responsive Design"],
+        bonus: [
+          {
+            type: "multiply",
+            bonusText: "Doubles Rust Effectiveness",
+            mash: 0,
+            multiplier: 2,
+          },
+        ],
+      },
+      {
+        name: "Color Gradient Maestro",
+        parent: "CSS",
+        cost: 10000,
+        description:
+          "Master the fine art of creating a color gradient that starts with brown and ends with an even darker brown. It's the subtle elegance!",
+        areas: ["Responsive Design", "User Interface"],
+        bonus: [
+          { type: "secret", bonusText: "NERD OUT!", mash: 0, multiplier: 0 },
+        ],
+      },
+    ],
+  },
+  {
+    name: "JavaScript",
+    difficulty: "Beginner",
+    description: "Make Websites Interactive",
+    cost: 1000,
+    mashPerSec: 100,
+    areas: ["Web Development", "Front-end Development"],
+    perks: [
+      {
+        name: "Basic Logic",
+        parent: "JavaScript",
+        cost: 20000,
+        description:
+          "Thanks to the Greek philosophers, your keyboard now suffers from mistreatment. That's just great!",
+        areas: ["Data Validation", "Form Handling"],
+        bonus: [
+          { type: "mash", bonusText: "+2 per Mash", mash: 2, multiplier: 0 },
+        ],
+      },
+      {
+        name: "DOM Sorcery",
+        parent: "JavaScript",
+        cost: 40000,
+        description:
+          "Unleash your power to manipulate the Document Object Model (DOM) and make elements dance to your tune.",
+        areas: ["Dynamic Web Content", "User Interaction"],
+        bonus: [
+          {
+            type: "multiply",
+            bonusText: "Doubles Rust Effectiveness",
+            mash: 0,
+            multiplier: 2,
+          },
+        ],
+      },
+      {
+        name: "Wild on the Pokémon API",
+        parent: "JavaScript",
+        cost: 100000,
+        description:
+          "Embark on an adventure through the mystical realms of the Pokémon API. Gotta catch 'em all, programmatically!",
+        areas: ["Server Communication", "Data Retrieval"],
+        bonus: [
+          { type: "secret", bonusText: "NERD OUT!", mash: 0, multiplier: 0 },
+        ],
+      },
+    ],
+  },
+  {
+    name: "Python",
+    difficulty: "Beginner",
+    description: "General-purpose Programming",
+    cost: 15000,
+    mashPerSec: 1500,
+    areas: ["Software Development", "Data Analysis"],
+    perks: [
+      {
+        name: "Attempt to Load MNIST",
+        parent: "Python",
+        cost: 150000,
+        description:
+          "Embark on a daring mission to load the MNIST dataset. Will you conquer the data or be overwhelmed?",
+        areas: ["Data Science", "Data Visualization"],
+        bonus: [
+          { type: "mash", bonusText: "+2 per Mash", mash: 2, multiplier: 0 },
+        ],
+      },
+      {
+        name: "Web Scraping Shenanigans",
+        parent: "Python",
+        cost: 450000,
+        description:
+          "Master the art of web scraping and extract hidden treasures of data from the vast realms of the internet.",
+        areas: ["Data Extraction", "Web Data Mining"],
+        bonus: [
+          {
+            type: "multiply",
+            bonusText: "Doubles Rust Effectiveness",
+            mash: 0,
+            multiplier: 2,
+          },
+        ],
+      },
+      {
+        name: "Skynet Activation",
+        parent: "Python",
+        cost: 600000,
+        description:
+          "Dive into the realm of artificial intelligence and predictive modeling. Will you create the next Skynet or save humanity?",
+        areas: ["Artificial Intelligence", "Predictive Modeling"],
+        bonus: [
+          { type: "secret", bonusText: "NERD OUT!", mash: 0, multiplier: 0 },
+        ],
+      },
+    ],
+  },
+  {
+    name: "Java",
+    difficulty: "Beginner",
+    description: "Building castles in code!",
+    cost: 100000,
+    mashPerSec: 5500,
+    areas: ["Software Development", "Back-end Development"],
+    perks: [
+      {
+        name: "Verbose much?",
+        parent: "Java",
+        cost: 2000000,
+        description:
+          "Embrace the verbosity! Write novels of code with meticulous details, leaving no stone unturned in the quest for precision.",
+        areas: ["Software Design", "Modularity"],
+        bonus: [
+          { type: "mash", bonusText: "+2 per Mash", mash: 2, multiplier: 0 },
+        ],
+      },
+      {
+        name: "Database Dominator",
+        parent: "Java",
+        cost: 3000000000,
+        description:
+          "Rule the databases like a mighty monarch, wielding the power of Java to conquer the realm of data persistence and management.",
+        areas: ["Data Persistence", "Database Management"],
+        bonus: [
+          {
+            type: "multiply",
+            bonusText: "Doubles Rust Effectiveness",
+            mash: 0,
+            multiplier: 2,
+          },
+        ],
+      },
+      {
+        name: "Checked Exception Enigma",
+        parent: "Java",
+        cost: 5000000000,
+        description:
+          "Unlock the mysteries of checked exceptions, a puzzle wrapped in a conundrum. Navigate the intricate paths of error handling with finesse!",
+        areas: ["API Development", "Integration"],
+        bonus: [
+          { type: "secret", bonusText: "NERD OUT!", mash: 0, multiplier: 0 },
+        ],
+      },
+    ],
+  },
+  {
+    name: "Ruby",
+    difficulty: "Beginner",
+    description: "The elegant art of code poetry.",
+    cost: 10000000,
+    mashPerSec: 15000,
+    areas: ["Web Development", "Scripting"],
+    perks: [
+      {
+        name: "GEMS!!!",
+        parent: "Ruby",
+        cost: 10000000000000,
+        description:
+          "Dive into the treasure trove of Ruby gems! Unleash the power of community-contributed code and bring magic to your projects.",
+        areas: ["Web Development", "Rapid Prototyping"],
+        bonus: [
+          { type: "mash", bonusText: "+2 per Mash", mash: 2, multiplier: 0 },
+        ],
+      },
+      {
+        name: "Metamagic",
+        parent: "Ruby",
+        cost: 20000000000000,
+        description:
+          "Step into the realm of metaprogramming, where you bend the laws of coding reality. Shape and mold your code with spellbinding flexibility.",
+        areas: ["Code Generation", "Dynamic Programming"],
+        bonus: [
+          {
+            type: "multiply",
+            bonusText: "Doubles Rust Effectiveness",
+            mash: 0,
+            multiplier: 2,
+          },
+        ],
+      },
+      {
+        name: "Chooo Chooo!",
+        parent: "Ruby",
+        cost: 20000000000000,
+        description:
+          "All aboard the Ruby on Rails express! Journey through the vast landscape of web development with speed, efficiency, and a touch of elegance.",
+        areas: ["Code Reusability", "Package Management"],
+        bonus: [
+          { type: "secret", bonusText: "NERD OUT!", mash: 0, multiplier: 0 },
+        ],
+      },
+    ],
+  },
+  {
+    name: "C++",
+    difficulty: "Intermediate",
+    description: "High-performance systems programming language",
+    cost: 150000000,
+    mashPerSec: 10000,
+    areas: ["System Programming", "Game Development"],
+    perks: [
+      {
+        name: "*Pointer here, *pointer there",
+        parent: "C++",
+        cost: 10000000000000,
+        description:
+          "Navigate the treacherous world of pointers with caution, for one wrong move can lead to memory leaks and undefined behavior!",
+        areas: ["Resource Optimization", "Low-level Programming"],
+        bonus: [
+          { type: "mash", bonusText: "+2 per Mash", mash: 2, multiplier: 0 },
+        ],
+      },
+      {
+        name: "Simulate Smoke",
+        parent: "C++",
+        cost: 20000000000000,
+        description:
+          "Bring virtual smoke to life with the power of WebGL. Watch as your graphics programming skills create mesmerizing visual effects.",
+        areas: ["Generic Programming", "Compile-time Optimization"],
+        bonus: [
+          {
+            type: "multiply",
+            bonusText: "Doubles Rust Effectiveness",
+            mash: 0,
+            multiplier: 2,
+          },
+        ],
+      },
+      {
+        name: "TrashTalk C",
+        parent: "C++",
+        cost: 70000000000000,
+        description:
+          "Challenge the ancient C programming language to prove your dominance. Show no mercy as you unleash your C++ superiority!",
+        areas: ["Computer Graphics", "Interactive Applications"],
+        bonus: [
+          { type: "secret", bonusText: "NERD OUT!", mash: 0, multiplier: 0 },
+        ],
+      },
+    ],
+  },
+  {
+    name: "Swift",
+    difficulty: "Intermediate",
+    description: "Modern and safe programming language for iOS and macOS",
+    cost: 100000000,
+    mashPerSec: 1000000,
+    areas: ["Mobile App Development", "iOS Development"],
+    perks: [
+      {
+        name: "Get a job at Apple",
+        parent: "Swift",
+        cost: 50000000000000,
+        description:
+          "Unlock the ultimate achievement: a golden ticket to the Apple headquarters. Become part of the elite iOS development team!",
+        areas: ["iOS Development", "User Interface Design"],
+        bonus: [
+          { type: "mash", bonusText: "+2 per Mash", mash: 2, multiplier: 0 },
+        ],
+      },
+      {
+        name: "Become A hipster",
+        parent: "Swift",
+        cost: 650000000000000,
+        description:
+          "Immerse yourself in the world of hipster developers. Grow a trendy beard and sip artisanal coffee while writing Swift code.",
+        areas: ["Data Persistence", "Database Management"],
+        bonus: [
+          {
+            type: "multiply",
+            bonusText: "Doubles Rust Effectiveness",
+            mash: 0,
+            multiplier: 2,
+          },
+        ],
+      },
+      {
+        name: "Combine Magic",
+        parent: "Swift",
+        cost: 1000000000000000,
+        description:
+          "Unleash the power of Combine, the reactive programming framework. Harness the flow of data and control the tides of asynchronous operations.",
+        areas: ["Reactive Programming", "Asynchronous Operations"],
+        bonus: [
+          { type: "secret", bonusText: "NERD OUT!", mash: 0, multiplier: 0 },
+        ],
+      },
+    ],
+  },
+  {
+    name: "Go",
+    difficulty: "Intermediate",
+    description: "Efficient and concurrent programming language",
+    cost: 20000000000,
+    mashPerSec: 10000000,
+    areas: ["Backend Development", "Network Applications"],
+    perks: [
+      {
+        name: "Brag about your Google internship",
+        parent: "Go",
+        cost: 10000000000000006,
+        description:
+          "Impress your friends with stories of your legendary Google internship. Let them know you're part of the Go language's inner circleand wield the power of efficient and concurrent programming like a true Go ninja!",
+        areas: ["Concurrency", "Parallelism"],
+        bonus: [
+          { type: "mash", bonusText: "+2 per Mash", mash: 2, multiplier: 0 },
+        ],
+      },
+      {
+        name: "Goroutine Ninjas",
+        parent: "Go",
+        cost: 20000000000000006,
+        description:
+          "Master the art of goroutines and channels, the secret weapons of Go. Conquer the realm of code reusability and achieve maximum efficiency!",
+        areas: ["Code Reusability", "Efficiency"],
+        bonus: [
+          {
+            type: "multiply",
+            bonusText: "Doubles Rust Effectiveness",
+            mash: 0,
+            multiplier: 2,
+          },
+        ],
+      },
+      {
+        name: "Code Simplicity!",
+        parent: "Go",
+        cost: 30000000000000006,
+        description:
+          "Embrace the elegance of simplicity with Go. Write clean and concise code that speaks volumes with its efficiency and effectiveness.",
+        areas: ["Web Development", "API Development"],
+        bonus: [
+          { type: "secret", bonusText: "NERD OUT!", mash: 0, multiplier: 0 },
+        ],
+      },
+    ],
+  },
+  {
+    name: "Rust",
+    difficulty: "Advanced",
+    description: "Safe and concurrent systems programming language",
+    cost: 100000000000,
+    mashPerSec: 156165,
+    areas: ["System Programming", "Embedded Systems"],
+    perks: [
+      {
+        name: "Safe but firm",
+        parent: "Rust",
+        cost: 100000000000000006,
+        description:
+          "With Rust, you can have the best of both worlds: safety and performance. Embrace the firm grip of Rust's memory management and conquer the world of concurrency!",
+        areas: ["Memory Management", "Concurrency"],
+        bonus: [
+          { type: "mash", bonusText: "+2 per Mash", mash: 2, multiplier: 0 },
+        ],
+      },
+      {
+        name: "Be",
+        parent: "Crabsticks",
+        cost: 300000000000000006,
+        description:
+          "Dive into the fascinating world of asynchronous programming with async/await in Rust. Be as nimble and agile as a crab wielding Rust's powerful concurrency features!",
+        areas: ["Asynchronous Operations", "Concurrency"],
+        bonus: [
+          { type: "secret", bonusText: "NERD OUT!", mash: 0, multiplier: 0 },
+        ],
+      },
+      {
+        name: "Embedded Systems",
+        parent: "Rust",
+        cost: 9999999999999999999,
+        description:
+          "Enter the realm of embedded systems and unleash Rust's full potential in the IoT world. Build the future where every device is powered by the strength of Rust!",
+        areas: ["IoT Development", "Embedded Programming"],
+        bonus: [
+          { type: "secret", bonusText: "NERD OUT!", mash: 0, multiplier: 0 },
+        ],
+      },
+    ],
+  },
+];
+export default upgradesConfig;
+

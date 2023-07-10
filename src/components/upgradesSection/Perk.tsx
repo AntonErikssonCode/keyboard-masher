@@ -232,7 +232,7 @@ function Perk({
       <div className="perk-info">
         <h4>{perk.name}</h4>
         {perk.bonus.map((bonus: any, index: number) => {
-          return <h5 key={"perk-info" + index}>{bonus.bonusText}</h5>;
+          return <h5 className="perk-info-small" key={"perk-info" + index}>{bonus.bonusText}</h5>;
         })}
       </div>
 

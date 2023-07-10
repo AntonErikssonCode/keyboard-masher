@@ -166,7 +166,6 @@ function App() {
           currentMashes:
             prevPlayerInfo.currentMashes + playerInfo.mashPerSec / updateTime,
         }));
-        document.title = "KeyMasher " + playerInfo.currentMashes;
       }, 1000 / updateTime);
 
       return () => clearInterval(interval);
@@ -224,10 +223,32 @@ function App() {
   const circlesRef = useRef<Circle[]>([]);
 
   useEffect(() => {
+    const vibrantColors = [
+      "#03A9F466",
+      "#FF525266",
+      "#FF408166",
+      "#E040FB66",
+      "#7C4DFF66",
+      "#536DFE66",
+      "#448AFF66",
+      "#40C4FF66",
+      "#18FFFF66",
+      "#64FFDA66",
+      "#69F0AE66",
+      "#B2FF5966",
+      "#EEFF4166",
+      "#FFFF0066",
+      "#FFD74066",
+      "#FFAB4066",
+      "#FF6E4066",
+    ];
     const canvas = canvasRef.current;
     const context = canvas!.getContext("2d")!;
 
     let animationFrameId: number;
+    
+    const amountOfOwnedUpgrades = playerInfo.upgradesOwned.length;
+    const colorIndex = getRandomInt(0, amountOfOwnedUpgrades)
 
     const animate = () => {
       animationFrameId = requestAnimationFrame(animate);
@@ -248,7 +269,7 @@ function App() {
           } else {
             context.beginPath();
             context.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
-            context.fillStyle = "#03A9F466";
+            context.fillStyle = "#18FFFF66"//vibrantColors[colorIndex]// "#03A9F466";
             context.fill();
           }
       });
@@ -278,7 +299,7 @@ function App() {
 
       context.beginPath();
       context.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
-      context.fillStyle = "#FF0000";
+      context.fillStyle = "#fff";
       context.fill();
     }
   };
@@ -291,7 +312,7 @@ function App() {
   };
 
   const getRandomRadius = () => {
-    return getRandomIntNotFloor(5, 15);
+    return getRandomIntNotFloor(5, 30);
   };
 
   useEffect(() => {
@@ -304,7 +325,6 @@ function App() {
   useEffect(() => {
     if (playerInfoLoaded) {
       checkAchievements();
-      console.log(playerInfo)
     }
   }, [playerInfo.totalMashes, playerInfo.totalClicks]);
   
@@ -313,14 +333,14 @@ function App() {
   
     // Check mash achievements
     mash.forEach((achievement:any) => {
-      if (playerInfo.totalMashes >= achievement.amount && !hasAchievement(achievement)) {
+      if (playerInfo.totalClicks >= achievement.amount && !hasAchievement(achievement)) {
         addAchievement(achievement);
       }
     });
   
     // Check total achievements
     total.forEach((achievement:any) => {
-      if ((playerInfo.totalMashes + playerInfo.totalClicks) >= achievement.amount && !hasAchievement(achievement)) {
+      if (playerInfo.totalMashes >= achievement.amount && !hasAchievement(achievement)) {
         addAchievement(achievement);
       }
     });
