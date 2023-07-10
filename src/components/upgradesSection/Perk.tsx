@@ -247,7 +247,7 @@ function Perk({
             playerInfo.currentMashes >= perk.cost ? "" : "cant-afford-upgrade"
           }  `}
         >
-          Build <br></br> {shortenNumber(perk.cost)}
+          Build <br></br> {shortenNumber(perk.cost, false)}
         </button>
       ) : null}
     </div>

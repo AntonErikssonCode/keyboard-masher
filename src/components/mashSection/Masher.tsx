@@ -55,10 +55,10 @@ function Masher(props: MasherProps) {
       ))} */}
 
       <div className="currentMashes crazy-box-shadow default-border">
-        {shortenNumber(props.currentMashes) + " Mashes"}
+        {shortenNumber(props.currentMashes, true) + " Mashes"}
       </div>
       <div className="mashPerSec crazy-box-shadow default-border">
-        {shortenNumber(props.mashPerSec) + " Mashes/s"}
+        {shortenNumber(props.mashPerSec, true) + " Mashes/s"}
       </div>
 
       <div className={`laptop-container ${isPressed ? "pressed" : ""}`}>

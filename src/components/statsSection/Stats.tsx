@@ -45,12 +45,12 @@ function Stats({ playerInfo }: StatsProps) {
           <StatsCategory title="General Stats">
             <div className="stats-row">
               <h4>Total Mashes</h4>
-              <p>{shortenNumber(playerInfo.totalMashes)}</p>
+              <p>{shortenNumber(playerInfo.totalMashes, false)}</p>
             </div>
 
             <div className="stats-row">
               <h4>Current Mashes</h4>
-              <p>{shortenNumber(playerInfo.currentMashes)}</p>
+              <p>{shortenNumber(playerInfo.currentMashes, false)}</p>
             </div>
             <div className="stats-row">
               <h4>Mash Bonus on Click</h4>
@@ -108,7 +108,7 @@ function Stats({ playerInfo }: StatsProps) {
                     </div>
 
                     <div className="stats-row-part">
-                      <p>{shortenNumber(MPS)}</p>
+                      <p>{shortenNumber(MPS, false)}</p>
                     </div>
                     <div className="stats-row-part-small">
                       <p>x</p>
@@ -126,7 +126,7 @@ function Stats({ playerInfo }: StatsProps) {
                       <p>=</p>
                     </div>
                     <div className="stats-row-part">
-                      <p> {shortenNumber(MPS * amount * multiplier)}</p>
+                      <p> {shortenNumber(MPS * amount * multiplier, false)}</p>
                     </div>
                   </div>
                 );
@@ -142,12 +142,12 @@ function Stats({ playerInfo }: StatsProps) {
                   case "mash":
                     color = "#8BC34A";
                     text = `You mashed the laptop ${shortenNumber(
-                      achievement.amount
+                      achievement.amount, false
                     )} times!`;
                     break;
                   case "total":
                     color = "#FF4081";
-                    text = `${shortenNumber(achievement.amount)} Total Mashes!`;
+                    text = `${shortenNumber(achievement.amount, false)} Total Mashes!`;
                     break;
 
                   default:

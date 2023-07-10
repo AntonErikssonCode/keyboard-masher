@@ -3,8 +3,11 @@ function showTwoDecimals(number:number) {
   return Number(number.toFixed(2));
 }
 
-function shortenNumber(number: any): string {
-  const suffixes: string[] = ['', 'K', 'M', 'B', 'T', 'Q', 'QQ', 'S', 'SS', 'O', 'N', 'D', 'U', 'DD', 'TD', 'QD', 'Qn', 'SD', 'ST', 'O', 'N', 'V', 'U', 'DT'];
+function shortenNumber(number: any, useLongSuffixes: boolean): string {
+  const suffixesShort: string[] = ['', 'K', 'M', 'B', 'T', 'Q', 'QQ', 'S', 'SS', 'O', 'N', 'D'];
+  const suffixesLong: string[] = ['', ' thousand', ' million', ' billion', ' trillion', ' quadrillion', ' quintillion', ' sextillion', ' septillion', ' octillion', ' nonillion', ' decillion'];
+
+  const suffixes: string[] = useLongSuffixes ? suffixesLong : suffixesShort;
   let suffixIndex: number = 0;
 
   while (number >= 1000 && suffixIndex < suffixes.length - 1) {
@@ -12,11 +15,12 @@ function shortenNumber(number: any): string {
     suffixIndex += 1;
   }
 
-  const formattedNumber: string = number.toFixed(2).replace(/\.0+$/, '');
+  const formattedNumber: string = number.toFixed(0).replace(/\.0+$/, '');
   const shortenedNumber: string = formattedNumber + suffixes[suffixIndex];
 
   return shortenedNumber;
 }
+
 
 function getRandomInt(min: number, max: number): number {
   // Add 1 to the difference between max and min

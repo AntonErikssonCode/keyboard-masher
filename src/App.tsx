@@ -23,6 +23,7 @@ function App() {
     totalClicks: 0,
     mashPerSec: 0,
     mashBonus: 1,
+    allMultiplier:1,
     achievement: [],
     upgradesOwned: [
       {
@@ -134,6 +135,11 @@ function App() {
     }
   }, []);
  
+  /* Cookies.set("playerInfo", JSON.stringify(defaultPlayer), {
+    expires: expirationTimeInDays,
+  });
+  setPlayerInfoLoaded(true);
+  console.dir("No Cookie"); */
   // SAVE playerInfo cookie TO COOKIE WHEN IT CHANGES
   useEffect(() => {
     if (playerInfoLoaded) {
@@ -196,7 +202,7 @@ function App() {
         mashPerSec += upgradeData.mashPerSec * upgradeModifer;
       }
     });
-    return mashPerSec;
+    return mashPerSec * playerInfo.allMultiplier;
   }
 
   // HANDLES

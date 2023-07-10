@@ -39,7 +39,7 @@ function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo, index}: UpgradeProp
     setGetNumberOfOwnedPerks(getNumberOfOwnedPerks(playerInfo, upgrade));
 
     setBought(getBought(playerInfo, upgrade));
-    setMps(shortenNumber(getMPS(mashPerSec, bought, playerInfo, upgrade)));
+    setMps(shortenNumber(getMPS(mashPerSec, bought, playerInfo, upgrade), false));
   }, [playerInfo]);
 
   function getMPS(mashPerSec: number, bought: number, playerInfo:any, upgrade:any) {
@@ -209,8 +209,8 @@ function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo, index}: UpgradeProp
           }}
         >
           <h3 className="">{"Code in " + name}</h3>
-          <h4 className="">{"Cost " + shortenNumber(newCost) + " Mashes"}</h4>
-          <h4 className="">{"+ " + shortenNumber(mashPerSec) + " Mashes/s"}</h4>
+          <h4 className="">{"Cost " + shortenNumber(newCost, false) + " Mashes"}</h4>
+          <h4 className="">{"+ " + shortenNumber(mashPerSec, false) + " Mashes/s"}</h4>
         </button>
       </div>
       <div className="perks-container">
