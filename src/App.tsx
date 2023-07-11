@@ -43,7 +43,7 @@ function App() {
         multiplier: 1,
       },
       {
-        name: "JavaScript",
+        name: "Javascript",
         number: 0,
         perks: 0,
         bought: false,

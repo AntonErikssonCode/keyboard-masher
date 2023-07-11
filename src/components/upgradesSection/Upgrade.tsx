@@ -40,7 +40,10 @@ function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo, index}: UpgradeProp
 
     setBought(getBought(playerInfo, upgrade));
     setMps(shortenNumber(getMPS(mashPerSec, bought, playerInfo, upgrade), false));
+    setNewCost(getCost(playerInfo, upgrade));
   }, [playerInfo]);
+
+  
 
   function getMPS(mashPerSec: number, bought: number, playerInfo:any, upgrade:any) {
     const multiplier = getMultiplier(playerInfo, upgrade);
@@ -85,7 +88,6 @@ function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo, index}: UpgradeProp
     return perkOwned;
   }
 
-  const yes = isPerkOwned(playerInfo, upgrade, 0);
 
   function getBought(playerInfo: any, upgrade: any) {
     const upgradeName = upgrade.name;
@@ -103,16 +105,16 @@ function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo, index}: UpgradeProp
     const upgradeName = upgrade.name;
     const upgradesOwnedArray = playerInfo.upgradesOwned;
     const numberOfOwned = playerInfo.upgradesOwned;
-    let multiplier = 1;
+    let numberOfItems = 0;
     upgradesOwnedArray.forEach((element: any) => {
       if (element.name === upgradeName) {
-        multiplier = element.number + 1;
+        numberOfItems = element.number + 1;
       }
     });
 
-    const newPrice = Math.ceil(newCost * balanceConfig.upgradesMultiplier);
-
-    setNewCost(newPrice);
+    const newPrice = Math.ceil(upgrade.cost * (balanceConfig.upgradesMultiplier ** numberOfItems ));
+    if(numberOfItems === 0)return upgrade.cost;
+    
     return newPrice;
   }
 

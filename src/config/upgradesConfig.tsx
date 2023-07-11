@@ -568,7 +568,7 @@ const upgradesConfig = [
     ],
   },
   {
-    name: "JavaScript",
+    name: "Javascript",
     difficulty: "Beginner",
     description: "Make Websites Interactive",
     cost: 10000,
@@ -577,7 +577,7 @@ const upgradesConfig = [
     perks: [
       {
         name: "Basic Logic",
-        parent: "JavaScript",
+        parent: "Javascript",
         cost: 20000,
         description:
           "Thanks to the Greek philosophers, your keyboard now suffers from mistreatment. That's just great!",
@@ -588,7 +588,7 @@ const upgradesConfig = [
       },
       {
         name: "DOM Sorcery",
-        parent: "JavaScript",
+        parent: "Javascript",
         cost: 50000,
         description:
           "Unleash your power to manipulate the Document Object Model (DOM) and make elements dance to your tune.",
@@ -596,7 +596,7 @@ const upgradesConfig = [
         bonus: [
           {
             type: "multiply",
-            bonusText: "Doubles JavaScript Effectiveness",
+            bonusText: "Doubles Javascript Effectiveness",
             mash: 0,
             multiplier: 2,
           },
@@ -604,7 +604,7 @@ const upgradesConfig = [
       },
       {
         name: "Wild on the Pokémon API",
-        parent: "JavaScript",
+        parent: "Javascript",
         cost: 100000,
         description:
           "Embark on an adventure through the mystical realms of the Pokémon API. Gotta catch 'em all, programmatically!",

@@ -15,7 +15,7 @@ function shortenNumber(number: any, useLongSuffixes: boolean): string {
     suffixIndex += 1;
   }
 
-  const formattedNumber: string = number.toFixed(0).replace(/\.0+$/, '');
+  const formattedNumber: string = number.toFixed(1).replace(/\.0+$/, '');
   const shortenedNumber: string = formattedNumber + suffixes[suffixIndex];
 
   return shortenedNumber;
