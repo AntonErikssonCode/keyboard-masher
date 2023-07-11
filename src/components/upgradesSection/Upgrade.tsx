@@ -112,13 +112,13 @@ function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo, index}: UpgradeProp
       }
     });
 
-    const newPrice = Math.ceil(upgrade.cost * (balanceConfig.upgradesMultiplier ** numberOfItems ));
-    if(numberOfItems === 0)return upgrade.cost;
+    const newPrice = upgrade.cost * (balanceConfig.upgradesMultiplier ** numberOfItems );
+    if(numberOfItems === 1) return upgrade.cost;
     
     return newPrice;
   }
 
-  function handleBuy() {
+  /* function handleBuy() {
     if (playerInfo.currentMashes >= newCost) {
       const updatedPlayerInfo = {
         ...playerInfo,
@@ -137,21 +137,31 @@ function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo, index}: UpgradeProp
       getCost(playerInfo, upgrade);
       handleSetPlayerInfo(updatedPlayerInfo);
     }
-  }
-  const colorVariations = [
-    '#8BC34A',
-    '#8BC34A',
-    '#FF4081',
-    '#FF4081',
-    '#03A9F4',
-    '#03A9F4',
-    '#8BC34A',
-    '#FF4081',
-    '#03A9F4',
-    '#8BC34A',
-  ];
+  } */
+
+  
+  function handleBuy() {
+    if (playerInfo.currentMashes >= newCost) {
+      const updatedPlayerInfo = {
+        ...playerInfo,
+        currentMashes: Math.ceil(playerInfo.currentMashes - newCost),
+  
+        upgradesOwned: playerInfo.upgradesOwned.map((upgradeOwned: any) => {
+          if (upgradeOwned.name === upgrade.name) {
+            return {
+              ...upgradeOwned,
+              number: upgradeOwned.number + 1,
+            };
+          }
+          return upgradeOwned;
+        }),
+      };
   
 
+      handleSetPlayerInfo(updatedPlayerInfo);
+    }
+  }
+  
   return (
     <div className="upgradesSection">
       <div

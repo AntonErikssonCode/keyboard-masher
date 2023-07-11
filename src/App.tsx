@@ -14,12 +14,42 @@ interface Circle {
   speedY: number;
   radius: number;
 }
+// Function to set a cookie
+function setCookie(name:any, value:any, days:any) {
+  const expires = new Date();
+  expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
+  document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
+}
+
+// Function to get a cookie
+function getCookie(name:any) {
+  const cookieName = `${name}=`;
+  const cookies = document.cookie.split(";");
+
+  for (let i = 0; i < cookies.length; i++) {
+    let cookie = cookies[i];
+    while (cookie.charAt(0) === " ") {
+      cookie = cookie.substring(1);
+    }
+    if (cookie.indexOf(cookieName) === 0) {
+      return cookie.substring(cookieName.length, cookie.length);
+    }
+  }
+
+  return null;
+}
+
+// Function to delete a cookie
+function deleteCookie(name:any) {
+  document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;`;
+}
+
 function App() {
   // CONFIG CONSTS
   const expirationTimeInDays = 100;
   const defaultPlayer = {
-    currentMashes:100000,
-    totalMashes: 1000000,
+    currentMashes:1000000000000,
+    totalMashes: 1000000000000,
     totalClicks: 0,
     mashPerSec: 0,
     mashBonus: 1,
@@ -116,42 +146,36 @@ function App() {
 
   // USEEFFECT
   // LOAD INITIAL GAME DATA
-  
   useEffect(() => {
-    const cookieValue = Cookies.get("playerInfo");
-    if (cookieValue) {
-      // Cookie already exists, so parse the JSON string back into an object
-      const savedPlayerInfo = JSON.parse(cookieValue);
-      setPlayerInfo(savedPlayerInfo);
+    const savedPlayerInfo = getCookie("playerInfo");
+    if (savedPlayerInfo) {
+      setPlayerInfo(JSON.parse(savedPlayerInfo));
       setPlayerInfoLoaded(true);
-      console.dir("Cookie Existed");
-      console.dir(savedPlayerInfo)
-
     } else {
-      // Cookie doesn't exist, so set it with the initial playerInfo object
-      Cookies.set("playerInfo", JSON.stringify(defaultPlayer), {
-        expires: expirationTimeInDays,
-      });
+      setPlayerInfo(defaultPlayer);
       setPlayerInfoLoaded(true);
-      console.dir("No Cookie");
     }
   }, []);
- 
-  /* Cookies.set("playerInfo", JSON.stringify(defaultPlayer), {
-    expires: expirationTimeInDays,
-  });
-  setPlayerInfoLoaded(true);
-  console.dir("No Cookie"); */
-  // SAVE playerInfo cookie TO COOKIE WHEN IT CHANGES
+
+  // SAVE playerInfo AS A COOKIE WHEN IT UPDATES
   useEffect(() => {
     if (playerInfoLoaded) {
-      const jsonString = JSON.stringify(playerInfo);
-      Cookies.set("playerInfo", jsonString, { expires: expirationTimeInDays });
-      console.dir("Set Cookie");
-      console.dir(jsonString)
+      setCookie("playerInfo", JSON.stringify(playerInfo), expirationTimeInDays);
     }
-  }, [playerInfoLoaded, playerInfo]);
+  }, [playerInfo]);
 
+  // ...
+
+  // RESETS cookie AND playerInfo
+  const resetPlayerCookie = () => {
+    deleteCookie("playerInfo");
+    setPlayerInfo(defaultPlayer);
+  };
+
+
+  
+
+  
   // UPDATE mashPerSec WHEN  upgradesOwned CHANGES
   useEffect(() => {
     if (playerInfoLoaded) {
@@ -183,12 +207,12 @@ function App() {
 
   // FUNCTIONS
   // RESETS cookie AND playerInfo
-  const resetPlayerCookie = () => {
+/*   const resetPlayerCookie = () => {
     setPlayerInfo(defaultPlayer);
     Cookies.set("playerInfo", JSON.stringify(defaultPlayer), {
       expires: expirationTimeInDays,
     }); // Set expiration to 1 day
-  };
+  }; */
 
   // RETURNS mashPerSecond BASED ON upgradesOwned
   function calculateMashPerSec() {
@@ -222,11 +246,7 @@ function App() {
     setUpgradeOpen({ index: index, open: open });
   };
 
-  
-  useEffect(()=>{
-   /*  console.log(playerInfo) */
 
-  },[playerInfo])
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const circlesRef = useRef<Circle[]>([]);
