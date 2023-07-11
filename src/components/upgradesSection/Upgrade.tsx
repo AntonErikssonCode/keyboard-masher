@@ -144,7 +144,7 @@ function Upgrade({ handleSetPlayerInfo, upgrade, playerInfo, index}: UpgradeProp
     if (playerInfo.currentMashes >= newCost) {
       const updatedPlayerInfo = {
         ...playerInfo,
-        currentMashes: Math.ceil(playerInfo.currentMashes - newCost),
+        currentMashes: playerInfo.currentMashes - newCost,
   
         upgradesOwned: playerInfo.upgradesOwned.map((upgradeOwned: any) => {
           if (upgradeOwned.name === upgrade.name) {

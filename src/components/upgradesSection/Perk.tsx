@@ -145,37 +145,47 @@ function Perk({
    
   } */
   function handleBuyPerk() {
-    setIsBought(true);
-    handleSetPlayerInfo((prevPlayerInfo: any) => {
-      const updatedUpgradesOwned = prevPlayerInfo.upgradesOwned.map(
-        (upgrade: any) => {
-          if (upgrade.name === upgradeName) {
-            const updatedPerksOwned = upgrade.perksOwned.map(
-              (perkOwned: any, perkIndex: number) => {
-                if (perkIndex === index) {
-                  return { owned: true };
+    if (playerInfo.currentMashes >=perk.cost ) {
+      const updatedPlayerInfo = {
+        ...playerInfo,
+        currentMashes: playerInfo.currentMashes - perk.cost,
+      }
+      handleSetPlayerInfo(updatedPlayerInfo);
+      setIsBought(true);
+      handleSetPlayerInfo((prevPlayerInfo: any) => {
+        const updatedUpgradesOwned = prevPlayerInfo.upgradesOwned.map(
+          (upgrade: any) => {
+            if (upgrade.name === upgradeName) {
+              const updatedPerksOwned = upgrade.perksOwned.map(
+                (perkOwned: any, perkIndex: number) => {
+                  if (perkIndex === index) {
+                    return { owned: true };
+                  }
+                  return perkOwned;
                 }
-                return perkOwned;
-              }
-            );
-
-            return {
-              ...upgrade,
-              perksOwned: updatedPerksOwned,
-            };
+              );
+  
+              return {
+                ...upgrade,
+                perksOwned: updatedPerksOwned,
+              };
+            }
+  
+            return upgrade;
           }
-
-          return upgrade;
-        }
-      );
-
-      return {
-        ...prevPlayerInfo,
-        upgradesOwned: updatedUpgradesOwned,
-      };
-    });
-
-    addPerkBonus(upgradeName, index);
+        );
+  
+        return {
+          ...prevPlayerInfo,
+          upgradesOwned: updatedUpgradesOwned,
+        };
+      });
+  
+      addPerkBonus(upgradeName, index);
+    
+    
+    }
+    
   }
 
   function addPerkBonus(upgradeName: string, perkIndex: number) {

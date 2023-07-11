@@ -48,8 +48,8 @@ function App() {
   // CONFIG CONSTS
   const expirationTimeInDays = 100;
   const defaultPlayer = {
-    currentMashes:1000000000000,
-    totalMashes: 1000000000000,
+    currentMashes:0,
+    totalMashes: 0,
     totalClicks: 0,
     mashPerSec: 0,
     mashBonus: 1,

@@ -9,7 +9,7 @@ interface StatsProps {
 function Stats({ playerInfo }: StatsProps) {
   const statsIMG = require("../../assets/stats.png");
   const info = playerInfo;
-  const [expanded, setExpanded] = useState(true);
+  const [expanded, setExpanded] = useState(false);
 
   function handleExpand() {
     
