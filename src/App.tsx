@@ -405,7 +405,7 @@ function App() {
               upgradeOpen={upgradeOpen}
               handleSetUpgradeOpen={handleSetUpgradeOpen}
             />
-            <button onClick={resetPlayerCookie}>Reset Player</button>
+          {/*   <button onClick={resetPlayerCookie}>Reset Player</button> */}
           </>
         ) : (
           <div>Loading...</div>

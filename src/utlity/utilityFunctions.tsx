@@ -5,7 +5,7 @@ function showTwoDecimals(number:number) {
 
 function shortenNumber(number: any, useLongSuffixes: boolean): string {
   const suffixesShort: string[] = ['', 'K', 'M', 'B', 'T', 'Q', 'QQ', 'S', 'SS', 'O', 'N', 'D'];
-  const suffixesLong: string[] = ['', ' thousand', ' million', ' billion', ' trillion', ' quadrillion', ' quintillion', ' sextillion', ' septillion', ' octillion', ' nonillion', ' decillion'];
+  const suffixesLong: string[] = ['', ' Thousand', ' Million', ' Billion', ' Trillion', ' Quadrillion', ' Quintillion', ' Sextillion', ' Septillion', ' Octillion', ' Nonillion', ' Decillion'];
 
   const suffixes: string[] = useLongSuffixes ? suffixesLong : suffixesShort;
   let suffixIndex: number = 0;
