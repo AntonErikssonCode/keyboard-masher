@@ -19,7 +19,7 @@ function Layout(props: LayoutProps) {
         {upgradesConfig.map((upgrade, index) => {
           const totalMash = props.playerInfo.totalMashes;
           const cost = upgrade.cost;
-          if (totalMash > cost) {
+          if (totalMash > cost*0.8) {
             return (
               <Upgrade
                 key={"upgrade" + index}

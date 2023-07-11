@@ -16,10 +16,10 @@ interface Circle {
 }
 function App() {
   // CONFIG CONSTS
-  const expirationTimeInDays = 1;
+  const expirationTimeInDays = 100;
   const defaultPlayer = {
     currentMashes:100000,
-    totalMashes: 100000,
+    totalMashes: 1000000,
     totalClicks: 0,
     mashPerSec: 0,
     mashBonus: 1,
@@ -125,6 +125,8 @@ function App() {
       setPlayerInfo(savedPlayerInfo);
       setPlayerInfoLoaded(true);
       console.dir("Cookie Existed");
+      console.dir(savedPlayerInfo)
+
     } else {
       // Cookie doesn't exist, so set it with the initial playerInfo object
       Cookies.set("playerInfo", JSON.stringify(defaultPlayer), {
@@ -146,6 +148,7 @@ function App() {
       const jsonString = JSON.stringify(playerInfo);
       Cookies.set("playerInfo", jsonString, { expires: expirationTimeInDays });
       console.dir("Set Cookie");
+      console.dir(jsonString)
     }
   }, [playerInfoLoaded, playerInfo]);
 

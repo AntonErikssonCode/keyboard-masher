@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./perk.css";
 import upgradesConfig from "../../config/upgradesConfig";
 import { showTwoDecimals, shortenNumber } from "../../utlity/utilityFunctions";
+import balanceConfig from "../../config/balanceConfig";
 
 interface Perk {
   playerInfo: any;
@@ -213,7 +214,7 @@ function Perk({
               }));
               break;
             case "secret":
-              const allMultiplierModfier = 1;
+              const allMultiplierModfier =balanceConfig.secretMutiplier;
               handleSetPlayerInfo((prevPlayerInfo: any) => ({
                 ...prevPlayerInfo,
 

@@ -32,7 +32,7 @@ function Stats({ playerInfo }: StatsProps) {
         className={`stats-top ${expanded ? "stats-top-expanded" : ""}`}
       >
         <button
-          className={`stats-close-button ${expanded ? "" : "hidden"}`}
+          className={`stats-close-button ${expanded ? "" : "stats-close-button-hide"}`}
           onClick={handleExpand}
         ></button>
         <div className="stats-img-container ">
@@ -97,7 +97,7 @@ function Stats({ playerInfo }: StatsProps) {
 
               const totalMash = playerInfo.totalMashes;
 
-              if (totalMash > cost) {
+              if (totalMash > cost * 0.8) {
                 return (
                   <div
                     className="stats-row-no-gap"
